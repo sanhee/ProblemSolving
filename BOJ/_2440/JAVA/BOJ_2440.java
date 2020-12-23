@@ -1,10 +1,10 @@
-package com.example.BOJ._2439.JAVA;
+package com.example.BOJ._2440.JAVA;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class BOJ_2441 {
+public class BOJ_2440 {
 
     public static void main(String[] args) {
 

@@ -51,8 +51,11 @@
 # #14681 사분면 고르기
 - [Github](https://github.com/sanhee/ProblemSolving/tree/main/BOJ/_14681/JAVA)
 
-# #15950 A+B-3
+# #10950 A+B-3
 - [Github](https://github.com/sanhee/ProblemSolving/tree/main/BOJ/_10950/JAVA)
 
-# #15951 A+B-4
+# #10951 A+B-4
 - [Github](https://github.com/sanhee/ProblemSolving/tree/main/BOJ/_10951/JAVA)
+
+# #10952 A+B-5
+- [Github](https://github.com/sanhee/ProblemSolving/tree/main/BOJ/_10952/JAVA)

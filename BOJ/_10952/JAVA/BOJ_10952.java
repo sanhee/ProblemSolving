@@ -10,11 +10,11 @@ public class BOJ_10952 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
 
-        boolean zeroCheck = (br.readLine().charAt(0)-'0' == 0)&&(br.readLine().charAt(2)-'0' == 0) ;
-
-        while(br.readLine() != null || !zeroCheck){
-            int a = br.readLine().charAt(0)-'0';
-            int b = br.readLine().charAt(2)-'0';
+        while(true){
+            String str = br.readLine();
+            int a = str.charAt(0)-'0';
+            int b = str.charAt(2)-'0';
+            if(a == 0 && b == 0) break;
             sb.append(a+b).append("\n");
         }
         System.out.println(sb);

@@ -1,4 +1,4 @@
-package com.example.BOJ._2439.JAVA;
+package com.example.BOJ._2438.JAVA;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -3,6 +3,10 @@
 # #1008 A/B
 - [Github](https://github.com/sanhee/ProblemSolving/tree/main/BOJ/_1008/JAVA)
  
+# #1085 직사각형에서 탈출
+- 2020.12.30(수)
+- [Github](https://github.com/sanhee/ProblemSolving/tree/main/BOJ/_1085/JAVA)
+
 # #1330 두 수 비교하기 
 - [Github](https://github.com/sanhee/ProblemSolving/tree/main/BOJ/_1330/JAVA)
 
@@ -42,14 +46,8 @@
 # #10818 최소,최대
 - [Github](https://github.com/sanhee/ProblemSolving/tree/main/BOJ/_10818/JAVA)
 
-# #11654 아스키 코드
-- [Github](https://github.com/sanhee/ProblemSolving/tree/main/BOJ/_11654/JAVA)
-
-# #11720 숫자의 합
-- [Github](https://github.com/sanhee/ProblemSolving/tree/main/BOJ/_11720/JAVA)
-
-# #14681 사분면 고르기
-- [Github](https://github.com/sanhee/ProblemSolving/tree/main/BOJ/_14681/JAVA)
+# #10869 사칙연삭
+- [Github](https://github.com/sanhee/ProblemSolving/tree/main/BOJ/_10869/JAVA)
 
 # #10950 A+B-3
 - [Github](https://github.com/sanhee/ProblemSolving/tree/main/BOJ/_10950/JAVA)
@@ -59,3 +57,12 @@
 
 # #10952 A+B-5
 - [Github](https://github.com/sanhee/ProblemSolving/tree/main/BOJ/_10952/JAVA)
+
+# #11654 아스키 코드
+- [Github](https://github.com/sanhee/ProblemSolving/tree/main/BOJ/_11654/JAVA)
+
+# #11720 숫자의 합
+- [Github](https://github.com/sanhee/ProblemSolving/tree/main/BOJ/_11720/JAVA)
+
+# #14681 사분면 고르기
+- [Github](https://github.com/sanhee/ProblemSolving/tree/main/BOJ/_14681/JAVA)

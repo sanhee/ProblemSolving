@@ -1,57 +1,38 @@
 package com.example.BOJ._1052.JAVA;
 
 
-import java.util.Arrays;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class BOJ_1052 {
 
-    static public void bottle(int a, int b){
-        System.out.println("------------------------------");
-        System.out.println(a+" "+b);
-        System.out.println("------------------------------");
-        int N = a; //m N개의 물병을 가지고 있다.
-        int K = b; //m 한 번에 K개의 물병을 옮길 수 있다
-        int max_cnt = 0;
-        int remain_cnt = 0;
-        int result = 0;
-        int[] bottle = new int[N];
-        Arrays.fill(bottle, 1); //m 기본 1L 제공
+    public static void main(String[] args) throws IOException {
 
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        if(N>K){
-            for(int i=0;i<bottle.length-1;i++){
-                if(bottle[i] != 0 && bottle[i] == bottle[i+1]) {
-                    bottle[i] += bottle[i + 1];
-                    bottle[i + 1] = 0;
+        String inputStr[] = br.readLine().split(" ");
+
+        int n = Integer.parseInt(inputStr[0]);
+        int k = Integer.parseInt(inputStr[1]);
+        int need = 0;
+
+        int bitCount = Integer.bitCount(n);
+
+        if(bitCount<=k) need = 0;
+        else{
+            for(int i=0;i<n;i++){
+                int temp = (int)Math.pow(2,i); //m 2^n ...
+                if(n<temp){
+                    need = temp-n;
+                    break;
                 }
             }
-
-            Arrays.sort(bottle); // 배열 정렬
-            System.out.println("bottle 최대값: "+bottle[bottle.length-1]);
-
-            for(int i=0;i<bottle.length;i++){
-                if(bottle[i] == bottle[bottle.length-1]){
-                    max_cnt++;
-                }
-                else if(bottle[i] != 0 && bottle[i] < bottle[bottle.length-1] ) {
-                    remain_cnt++;
-                }
-            }
-
-            System.out.println("cnt_max: "+max_cnt);
-            System.out.println("cnt: "+remain_cnt);
-
-            result = max_cnt*remain_cnt;
         }
 
-        System.out.println(result);
+        System.out.println(need);
 
+        br.close();
     }
 
-    static public void main(String args[]) {
-        bottle(3,1);
-        bottle(7,2);
-        bottle(5,2);
-
-    }
 }

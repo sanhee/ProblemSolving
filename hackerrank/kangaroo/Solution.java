@@ -12,29 +12,29 @@ public class Solution {
 
         int curDiff = 0;
         int preDiff;
-
         int cnt = 0 ;
-       while(true){
+
+        while(true){
 
            preDiff = curDiff;
-
            curDiff = Math.abs(x1-x2);
 
+           if(x1 != x2 && v1 == v2){
+               return "NO";
+           }
            if(cnt > 0){
-               if(preDiff-1 != curDiff){
+               if(preDiff-Math.abs(v1-v2) != curDiff){ //m 일정한 감소폭 패턴은 v2-v1을 통해 구할 수 있다.
                    return "NO";
                }
                if( curDiff == 0 ){
                    return "YES";
                }
            }
-
            x1 += v1;
            x2 += v2;
 
            cnt++;
        }
-
     }
 
     private static final Scanner scanner = new Scanner(System.in);

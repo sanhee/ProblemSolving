@@ -10,13 +10,31 @@ public class Solution {
     // Complete the kangaroo function below.
     static String kangaroo(int x1, int v1, int x2, int v2) {
 
-        boolean check = true;
+        int curDiff = 0;
+        int preDiff;
 
-        if(x1 < x2 && v1<v2) check = false;
-        if(x1 != x2 && v1 == v2) check = false;
+        int cnt = 0 ;
+       while(true){
 
-        if (check) return "YES";
-        else return "NO";
+           preDiff = curDiff;
+
+           curDiff = Math.abs(x1-x2);
+
+           if(cnt > 0){
+               if(preDiff-1 != curDiff){
+                   return "NO";
+               }
+               if( curDiff == 0 ){
+                   return "YES";
+               }
+           }
+
+           x1 += v1;
+           x2 += v2;
+
+           cnt++;
+       }
+
     }
 
     private static final Scanner scanner = new Scanner(System.in);

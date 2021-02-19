@@ -5,37 +5,33 @@ import java.util.*;
 
 public class solution {
     //M 모범답안 참고
-    //m 메모리: 29328 KB
-    //m 시간: 596 ms
+    //m 메모리: 28864 KB
+    //m 시간: 572 ms
+    //m try-with-resources 구문을 빼고 메소드에 throws 예외를 지명했더니, 좀 더 빨라졋다.
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out))) {
-            int testCaseNum = Integer.parseInt(br.readLine());
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-            for (int testNum = 0; testNum < testCaseNum; testNum++) {
+        int testCaseNum = Integer.parseInt(br.readLine());
 
-                String separatedLine = br.readLine()+'\n';
-                Stack<Character> stack = new Stack<>();
+        for (int testNum = 0; testNum < testCaseNum; testNum++) {
 
-                for(char word:separatedLine.toCharArray()){
-                    if(word == ' ' || word == '\n'){
-                        while (!stack.empty()){
-                            bw.write(stack.pop());
-                        }
-                        bw.write(word); //m 마지막 'n'을 출력하기 위해 필요함.
-                    }else{
-                        stack.push(word);
+            String separatedLine = br.readLine() + '\n';
+            Stack<Character> stack = new Stack<>();
+
+            for (char word : separatedLine.toCharArray()) {
+                if (word == ' ' || word == '\n') {
+                    while (!stack.empty()) {
+                        bw.write(stack.pop());
                     }
+                    bw.write(word); //m 마지막 'n'을 출력하기 위해 필요함.
+                } else {
+                    stack.push(word);
                 }
             }
-
-            bw.flush();
-
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-
+        bw.flush();
     }
 }

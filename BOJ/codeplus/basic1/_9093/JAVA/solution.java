@@ -8,6 +8,7 @@ public class solution {
     //m 메모리: 28864 KB
     //m 시간: 572 ms
     //m try-with-resources 구문을 빼고 메소드에 throws 예외를 지명했더니, 좀 더 빨라졋다.
+    //m for문에 있는 변수 선언을 안하고 while에서 테스트케이스를 줄이면서 진행했더니 좀더 빨라졌다.
 
     public static void main(String[] args) throws IOException {
 
@@ -16,7 +17,7 @@ public class solution {
 
         int testCaseNum = Integer.parseInt(br.readLine());
 
-        for (int testNum = 0; testNum < testCaseNum; testNum++) {
+        while(testCaseNum-- > 0) {
 
             String separatedLine = br.readLine() + '\n';
             Stack<Character> stack = new Stack<>();

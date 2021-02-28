@@ -1,38 +1,50 @@
 package com.example.BOJ._1052.JAVA;
 
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 
 public class BOJ_1052 {
 
+    // Set up : I/O
+    static StringBuilder output = new StringBuilder();
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
     public static void main(String[] args) throws IOException {
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        // Set up : Global Variables
+        /* None */
 
-        String inputStr[] = br.readLine().split(" ");
+            // Set up : Input
+            String[] inputs = br.readLine().split(" ");
+            int N = Integer.parseInt(inputs[0]);
+            int K = Integer.parseInt(inputs[1]);
 
-        int n = Integer.parseInt(inputStr[0]);
-        int k = Integer.parseInt(inputStr[1]);
-        int need = 0;
-
-        int bitCount = Integer.bitCount(n);
-
-        if(bitCount<=k) need = 0;
-        else{
-            for(int i=0;i<n;i++){
-                int temp = (int)Math.pow(2,i); //m 2^n ...
-                if(n<temp){
-                    need = temp-n;
-                    break;
+            // Process
+            int ans = 0;
+            int bc = Integer.bitCount(N);
+            int ofs = 1;
+            while (bc > K) {
+                while ((N&ofs) == 0) {
+                    ofs <<= 1;
                 }
+                ans += ofs;
+                N += ofs;
+                bc = Integer.bitCount(N);
             }
+
+            // Control : Output
+            output.append(ans);
+
+            bw.write(output.toString());
+            bw.flush();
+
+            // Close up : I/O
+            br.close();
+            bw.close();
         }
 
-        System.out.println(need);
-
-        br.close();
-    }
+        // Helper Functions
+        /* None */
 
 }

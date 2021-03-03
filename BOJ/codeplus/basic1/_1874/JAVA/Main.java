@@ -10,7 +10,7 @@ public class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         Stack<Integer> stack = new Stack<>();
         int cursor = 0; // 스택에 들어간 마지막 수
-
+        StringBuilder sb = new StringBuilder();
         int testCaseNum = Integer.parseInt(br.readLine());
 
         while (testCaseNum-- > 0) {
@@ -20,21 +20,20 @@ public class Main {
             if(cursor < inputSequence){
                 while (cursor != inputSequence) {
                     stack.push(++cursor);
-                    bw.write("+");
-                    bw.newLine();
+                    sb.append("+").append("\n");
                 }
             }
             if(cursor >= inputSequence) { //스택에 들어갔던 마지막 수가 입력된 수열보다 크거나 같을 경우
                 if(stack.pop()==inputSequence){
-                    bw.write("-");
-                    bw.newLine();
+                    sb.append("-").append("\n");
                 }else{ // pop 을 할때마다 수열이 만들어지므로, 불가능한 경우
-                    bw = new BufferedWriter(new OutputStreamWriter(System.out));
-                    bw.write("NO");
+                    sb=new StringBuilder();
+                    sb.append("NO");
                     break;
                 }
             }
         }
+        bw.write(sb.toString());
         bw.flush();
     }
 }

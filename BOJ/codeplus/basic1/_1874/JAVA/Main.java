@@ -1,7 +1,7 @@
 package com.example.BOJ.codeplus.basic1._1874.JAVA;
 
 import java.io.*;
-import java.util.Stack;
+import java.util.*;
 
 public class Main {
 
@@ -10,7 +10,6 @@ public class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         Stack<Integer> stack = new Stack<>();
         int cursor = 0; // 스택에 들어간 마지막 수
-        StringBuilder strOut = new StringBuilder();
 
         int testCaseNum = Integer.parseInt(br.readLine());
 
@@ -21,24 +20,21 @@ public class Main {
             if(cursor < inputSequence){
                 while (cursor != inputSequence) {
                     stack.push(++cursor);
-                    strOut.append("+");
+                    bw.write("+");
+                    bw.newLine();
                 }
             }
-            if(cursor >= inputSequence) {
-                while (!stack.empty()) {
-                    stack.pop();
-                    if(cursor==inputSequence){
-                        strOut.append("-");
-                    }else{
-                        strOut = new StringBuilder();
-                        strOut.append("NO");
-                        break;
-                    }
+            if(cursor >= inputSequence) { //스택에 들어갔던 마지막 수가 입력된 수열보다 크거나 같을 경우
+                if(stack.pop()==inputSequence){
+                    bw.write("-");
+                    bw.newLine();
+                }else{ // pop 을 할때마다 수열이 만들어지므로, 불가능한 경우
+                    bw = new BufferedWriter(new OutputStreamWriter(System.out));
+                    bw.write("NO");
+                    break;
                 }
             }
         }
-        bw.write(strOut.toString());
         bw.flush();
     }
-
 }

@@ -1,7 +1,7 @@
 package com.example.BOJ.codeplus.basic1.에디터_1406.JAVA;
 
 import java.io.*;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.ListIterator;
 
 public class Main {
@@ -9,11 +9,11 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        ArrayList<Character> inputCharacterArrayList = new ArrayList<>(); // 순차저장 장점
+        LinkedList<Character> inputCharacterArrayList = new LinkedList<>(); // 순차저장 장점?.. 잘모르겠다..
 
-        char[] inputCharArray = br.readLine().toCharArray();
-        for (Character c : inputCharArray) {
-            inputCharacterArrayList.add(c);
+        String inputString = br.readLine();
+        for (int i=0; i<inputString.length();i++) {
+            inputCharacterArrayList.add(inputString.charAt(i));
         }
 
         int commandCount = Integer.parseInt(br.readLine());

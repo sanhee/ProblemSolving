@@ -1,4 +1,4 @@
-package com.example.BOJ.codeplus.basic1._1874.JAVA;
+package com.example.BOJ.codeplus.basic1.스택수열_1874.JAVA;
 
 import java.io.*;
 import java.util.*;

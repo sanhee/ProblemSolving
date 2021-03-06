@@ -1,4 +1,4 @@
-package com.example.BOJ.codeplus.basic1._9093.JAVA;
+package com.example.BOJ.codeplus.basic1.단어뒤집기_9093.JAVA;
 
 import java.io.*;
 import java.util.*;

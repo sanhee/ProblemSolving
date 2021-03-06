@@ -9,15 +9,15 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        LinkedList<Character> inputCharacterArrayList = new LinkedList<>(); // 순차저장 장점?.. 잘모르겠다..
+        LinkedList<Character> inputCharacterList = new LinkedList<>(); // LinkedList는 이전 노드와 다음 노드를 참조하는 상태만 변경하면 되기 때문 O(1) 복잡도
 
-        String inputString = br.readLine();
-        for (int i=0; i<inputString.length();i++) {
-            inputCharacterArrayList.add(inputString.charAt(i));
+        char[] inputArray = br.readLine().toCharArray(); // charAt와 속도차이는 안나는거 같다.
+        for (Character c : inputArray) {
+            inputCharacterList.add(c);
         }
 
         int commandCount = Integer.parseInt(br.readLine());
-        ListIterator<Character> cursor = inputCharacterArrayList.listIterator();
+        ListIterator<Character> cursor = inputCharacterList.listIterator();
         while (cursor.hasNext()) {
             cursor.next(); //m 명령어가 수행되기 전에 커서는 문장의 [맨 뒤]에 위치
         }
@@ -47,7 +47,7 @@ public class Main {
             }
         }
 
-        for (Character c : inputCharacterArrayList) {
+        for (Character c : inputCharacterList) {
             bw.write(c);
         }
         bw.flush();

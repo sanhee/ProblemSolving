@@ -5,6 +5,7 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        long start = System.currentTimeMillis();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
@@ -18,13 +19,12 @@ public class Main {
         int commandCount = Integer.parseInt(br.readLine());
 
         while(commandCount-- > 0){
-            //char[] arrayCommand = br.readLine().toCharArray();
             char[] arrayCommand = br.readLine().toCharArray();
 
             switch (arrayCommand[0]){
                 case 'L':  //m 커서를 [왼쪽]으로 한 칸 옮김 (커서가 문장의 맨 앞이면 무시됨)
                     if(cursor <= 0 ){
-                        cursor = -1;
+                        cursor = 0;
                         break;
                     }
                     cursor--;
@@ -54,6 +54,8 @@ public class Main {
                                                                     //m 커서가 위치한 곳에 데이터를 추가해야, 커서 왼쪽에 문자가 추가된 것처럼 보일 수 있다.
                     cursor++;
                     break;
+                default:
+                    break;
             }
         }
 
@@ -62,8 +64,12 @@ public class Main {
         }
         bw.flush();
 
+        long end = System.currentTimeMillis();
+        System.out.println();
+        System.out.println(end-start);
         br.close();
         bw.close();
+
     }
 }
 

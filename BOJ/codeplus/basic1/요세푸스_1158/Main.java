@@ -25,27 +25,17 @@ public class Main {
             queue.add(i);
         }
 
-        int count = 1;
         StringBuilder sb = new StringBuilder();
-        while (!queue.isEmpty()){
-            if (count < K) {
+        sb.append("<");
+        for(int n=0; n<(N-1);n++){  // 이 과정은 N명의 사람이 모두 제거될 때까지 계속되지만, queue에 남아있는 마지막 K를 지울 때 ',' 를 더하면 안되므로 N-1까지 조건
+            for(int k=0 ; k<(K-1); k++){
                 queue.offer(queue.poll());
             }
-            if (count == K){
-                sb.append(queue.poll());
-            }
-            count++;
+            sb.append(queue.poll()).append(", ");
+        }
+        sb.append(queue.poll()).append(">");
 
-            if (count > K && !queue.isEmpty()){
-                count = 1;
-            }
-        }
-        String[] strArr = sb.toString().split("");
-        StringJoiner sj = new StringJoiner(", ", "<",">");
-        for(String s : strArr){
-            sj.add(s);
-        }
-        bw.write(sj.toString());
+        bw.write(sb.toString());
         bw.flush();
 
         br.close();

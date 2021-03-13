@@ -54,15 +54,12 @@ public class StackSolve {
             }
         }
 
-        StringBuilder sb = new StringBuilder();
         while (!leftStack.isEmpty()){
-            sb.append(leftStack.pop());
+            rightStack.push(leftStack.pop()); // LEFT STACK 맨 하단이 문자열의 첫번째 출력이 돼야하므로,
         }
-        sb.reverse();  //m 왼쪽 스택은 특성상 (LIFO) 거꾸로 출력되므로 반전 시켜줘야한다.
         while (!rightStack.isEmpty()){
-            sb.append(rightStack.pop());  //m 우측스택은 최상단에 있는 것이 출력 기준이므로, 따로 리버스를 해줄 필요가 없다.
+            bw.write(rightStack.pop());  //m 우측스택은 최상단에 있는 것이 출력 기준이므로, 따로 리버스를 해줄 필요가 없다.
         }
-        bw.write(sb.toString());
         bw.flush();
 
         br.close();

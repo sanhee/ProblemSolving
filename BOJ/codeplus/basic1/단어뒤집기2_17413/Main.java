@@ -15,8 +15,6 @@ public class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         Stack<Character> reverseWord = new Stack<>();
         boolean bracketFlag = false; //m 괄호 < 를 만나게 될 경우 true
-        StringBuilder result = new StringBuilder();
-
         char[] inputCharArray = br.readLine().toCharArray();
 
         for (Character c : inputCharArray) {
@@ -25,26 +23,26 @@ public class Main {
                     bracketFlag = true;
 
                     while (!reverseWord.isEmpty()) {
-                        result.append(reverseWord.pop());
+                        bw.write(reverseWord.pop());
                     }
 
-                    result.append(c);
+                    bw.write(c);
                     break;
                 case '>':
                     bracketFlag = false;
-                    result.append(c);
+                    bw.write(c);
                     break;
                 case ' ':
 
                     while (!reverseWord.isEmpty()) {
-                        result.append(reverseWord.pop());
+                        bw.write(reverseWord.pop());
                     }
 
-                    result.append(c);
+                    bw.write(c);
                     break;
                 default:
                     if (bracketFlag) {
-                        result.append(c);
+                        bw.write(c);
                     }
                     if (!bracketFlag) {
                         reverseWord.push(c);
@@ -54,10 +52,8 @@ public class Main {
         }
 
         while (!reverseWord.isEmpty()) {
-            result.append(reverseWord.pop());
+            bw.write(reverseWord.pop());
         }
-
-        bw.write(result.toString());
 
         bw.flush();
         br.close();

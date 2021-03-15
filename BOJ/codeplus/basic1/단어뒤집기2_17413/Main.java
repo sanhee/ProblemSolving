@@ -14,44 +14,51 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         Stack<Character> reverseWord = new Stack<>();
-        int bracketFlag = 0; //m
+        boolean bracketFlag = false; //m 괄호 < 를 만나게 될 경우 true
         StringBuilder result = new StringBuilder();
 
         char[] inputCharArray = br.readLine().toCharArray();
-        int arraylength = inputCharArray.length;
 
-        for (int i = 0; i < arraylength; i++) {
-            switch (inputCharArray[i]) {
+        for (Character c : inputCharArray) {
+            switch (c) {
                 case '<':
-                    bracketFlag = (bracketFlag == 0) ? 1 : 3;
-                    if(bracketFlag == 1) {
-                        result.append(inputCharArray[i]);
-                    }else if(bracketFlag == 3){
-                        while(!reverseWord.isEmpty()){
-                            result.append(reverseWord.pop());
-                        }
-                        result.append(inputCharArray[i]);
+                    bracketFlag = true;
+
+                    while (!reverseWord.isEmpty()) {
+                        result.append(reverseWord.pop());
                     }
+
+                    result.append(c);
                     break;
                 case '>':
-                    bracketFlag = 2;
-                    result.append(inputCharArray[i]);
+                    bracketFlag = false;
+                    result.append(c);
+                    break;
+                case ' ':
+
+                    while (!reverseWord.isEmpty()) {
+                        result.append(reverseWord.pop());
+                    }
+
+                    result.append(c);
                     break;
                 default:
-                    if (bracketFlag % 2 != 0) {
-                        result.append(inputCharArray[i]);
+                    if (bracketFlag) {
+                        result.append(c);
                     }
-                    if (bracketFlag == 2 || bracketFlag == 0) {
-                        reverseWord.push(inputCharArray[i]);
+                    if (!bracketFlag) {
+                        reverseWord.push(c);
                     }
                     break;
             }
         }
-        while(!reverseWord.isEmpty()){
+
+        while (!reverseWord.isEmpty()) {
             result.append(reverseWord.pop());
         }
 
         bw.write(result.toString());
+
         bw.flush();
         br.close();
         bw.close();

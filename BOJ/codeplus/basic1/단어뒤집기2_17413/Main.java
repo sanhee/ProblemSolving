@@ -14,7 +14,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         Stack<Character> reverseWord = new Stack<>();
-        boolean bracketFlag = false; //m 괄호 < 를 만나게 될 경우 true
+        int bracketFlag = 0; //m
         StringBuilder result = new StringBuilder();
 
         char[] inputCharArray = br.readLine().toCharArray();
@@ -23,28 +23,35 @@ public class Main {
         for (int i = 0; i < arraylength; i++) {
             switch (inputCharArray[i]) {
                 case '<':
-                    bracketFlag = true;
-                    result.append(inputCharArray[i]);
+                    bracketFlag = (bracketFlag == 0) ? 1 : 3;
+                    if(bracketFlag == 1) {
+                        result.append(inputCharArray[i]);
+                    }else if(bracketFlag == 3){
+                        while(!reverseWord.isEmpty()){
+                            result.append(reverseWord.pop());
+                        }
+                        result.append(inputCharArray[i]);
+                    }
                     break;
                 case '>':
-                    bracketFlag = false;
+                    bracketFlag = 2;
                     result.append(inputCharArray[i]);
                     break;
                 default:
-                    if (bracketFlag) {
-                        bw.write(inputCharArray[i]);
+                    if (bracketFlag % 2 != 0) {
+                        result.append(inputCharArray[i]);
                     }
-                    if (!bracketFlag) {
+                    if (bracketFlag == 2 || bracketFlag == 0) {
                         reverseWord.push(inputCharArray[i]);
                     }
                     break;
             }
         }
-
         while(!reverseWord.isEmpty()){
             result.append(reverseWord.pop());
         }
 
+        bw.write(result.toString());
         bw.flush();
         br.close();
         bw.close();

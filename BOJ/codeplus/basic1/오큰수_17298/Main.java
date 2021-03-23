@@ -19,19 +19,20 @@ public class Main {
 
         Stack<Integer> stack = new Stack<>();
 
-        while (testCaseCount-- > 0) {
-            for (int index = 0; index < inputSequence.length; index++) {
-                int currentElement = Integer.parseInt(inputSequence[index]);
 
-                if (stack.isEmpty()) {
-                    stack.push(index);
-                }
+        for (int index = 0; index < testCaseCount; index++) {
+            int currentElement = Integer.parseInt(inputSequence[index]);
 
-                while (!stack.isEmpty() && Integer.parseInt(inputSequence[stack.peek()]) < currentElement){
-                    nge[stack.pop()] = currentElement;
-                }
+            if (stack.isEmpty()) {
+                stack.push(index);
             }
+
+            while (!stack.isEmpty() && Integer.parseInt(inputSequence[stack.peek()]) < currentElement){
+                nge[stack.pop()] = currentElement;
+            }
+            stack.push(index);
         }
+
 
         while (!stack.isEmpty()) {
             nge[stack.pop()] = -1;

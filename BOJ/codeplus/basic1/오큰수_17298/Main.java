@@ -26,22 +26,19 @@ public class Main {
                 if (stack.isEmpty()) {
                     stack.push(index);
                 }
-                while (stack.isEmpty()) {
-                    if (Integer.parseInt(inputSequence[stack.peek()]) < currentElement) { // 오큰수 일경우
-                        nge[stack.pop()] = currentElement;
-                    } else {
-                        break;
-                    }
+
+                while (!stack.isEmpty() && Integer.parseInt(inputSequence[stack.peek()]) < currentElement){
+                    nge[stack.pop()] = currentElement;
                 }
             }
         }
 
-        if (stack.size() == 1) {
+        while (!stack.isEmpty()) {
             nge[stack.pop()] = -1;
         }
 
         for (int n : nge) {
-            bw.write(n+" ");
+            bw.write(n + " ");
         }
 
         bw.flush();

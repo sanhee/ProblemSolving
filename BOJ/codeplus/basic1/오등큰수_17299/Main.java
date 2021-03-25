@@ -1,6 +1,7 @@
 package com.example.BOJ.codeplus.basic1.오등큰수_17299;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,14 +17,20 @@ public class Main {
 
         final int MAX_COUNT = Integer.parseInt(br.readLine());
         final String[] inputLine = br.readLine().split(" ");
-        Map<Integer,Integer> sequence = new HashMap<>();
+        int[] sequence  = new int[MAX_COUNT];
+        Map<Integer,Integer> sequenceMap = new HashMap<>();
 
         for(int i=0 ; i< MAX_COUNT ; i++){
             int cursorNumber = Integer.parseInt(inputLine[i]);
-
-            sequence.put(cursorNumber,sequence.get(cursorNumber)+1);
+            sequence[i] = cursorNumber;
+            if(sequenceMap.containsKey(cursorNumber)) {
+                sequenceMap.put(cursorNumber, sequenceMap.get(cursorNumber) + 1);
+                continue;
+            }
+            sequenceMap.put(cursorNumber, 1);
         }
-        System.out.println(sequence.toString());
+        System.out.println(Arrays.toString(sequence));
+        System.out.println(sequenceMap.toString());
 
         br.close();
         bw.close();

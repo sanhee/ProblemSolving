@@ -8,18 +8,17 @@ public class Main {
              BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out))) {
 
             final String[] INPUT_RANGE = br.readLine().split(" ");
-            final int RANGE_START = Integer.parseInt(INPUT_RANGE[0]);
             final int RANGE_END = Integer.parseInt(INPUT_RANGE[1]);
 
             int[] prime = new int[1_000_000];
-            boolean[] chekedNotPrime = new boolean[1_000_000];
+            boolean[] chekedNotPrime = new boolean[1_000_001];
             int primeCount = 0;
-
+            StringBuilder sb = new StringBuilder();
             for (int i = 2; i <= RANGE_END; i++) {
                 if (!chekedNotPrime[i]) {
                     prime[primeCount++] = i;
                     if(i>2) {
-                        bw.write(i + "");
+                       sb.append(i).append(System.lineSeparator());
                     }
 
                     for(int j=i*2; j<=RANGE_END ; j+=i){
@@ -27,7 +26,7 @@ public class Main {
                     }
                 }
             }
-
+            bw.write(sb.toString().trim());
             bw.flush();
         }
     }

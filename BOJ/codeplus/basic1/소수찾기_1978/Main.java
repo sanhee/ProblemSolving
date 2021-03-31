@@ -7,7 +7,7 @@ public class Main {
     public static boolean prime(int num){
         if(num < 2) return false;
 
-        for(int i=2 ; i*i<=num ; i++){
+        for(int i=2 ; i*i<=num ; i++){ // 루트 n만큼만 검사
             if(num%i == 0) {
                 return false;
             }

@@ -5,9 +5,7 @@ class Solution {
         new Solution().solution("01025466893");
     }
     public String solution(String phone_number) {
-
         int len = phone_number.length()-1;
-
         int num = len-4;
 
         StringBuilder sb = new StringBuilder();

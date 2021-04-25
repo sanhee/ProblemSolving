@@ -2,18 +2,14 @@ package com.example.LeetCode.ReverseString;
 
 public  class Solution {
     public void reverseString(char[] s) {
-        int left = 0;
-        int right = s.length-1;
-        char temp;
+        StringBuilder sb = new StringBuilder();
 
-        while(left < right){
-            temp = s[left];
-            s[left] = s[right];
-            s[right] = temp;
-
-            left++;
-            right--;
+        for(char c : s){
+            sb.append(c);
         }
+
+        sb.reverse().toString().toCharArray();
+
     }
 
     public static void main(String[] args){

@@ -7,7 +7,6 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
 
         Stack<Character> stack = new Stack<>();
 
@@ -18,45 +17,40 @@ public class Main {
                 break;
             }
 
+            boolean check = true;
+
             for (char c : charArray) {
-
                 if (!Character.isAlphabetic(c)) { // 특수문자 일 때
-
                     switch (c) {
-
                         case '(':
                         case '[':
                             stack.push(c);
                             break;
                         case ')':
-                            if (!stack.isEmpty() && stack.peek() == '(') {
-                                stack.pop();
-                            } else if (stack.isEmpty()) {
-                                stack.push(c);
+                            if(stack.isEmpty()||stack.pop() != '('){
+                                check = false;
                             }
                             break;
                         case ']':
-                            if (!stack.isEmpty() && stack.peek() == '[') {
-                                stack.pop();
-                            } else if (stack.isEmpty()) {
-                                stack.push(c);
+                            if(stack.isEmpty()||stack.pop() != '['){
+                                check = false;
                             }
                             break;
-
                     }
-
                 }
-
             }
-            if (stack.isEmpty()) {
-                sb.append("yes").append(System.lineSeparator());
-            } else {
-                sb.append("no").append(System.lineSeparator());
+            if (!stack.isEmpty()) {
+                check = false;
             }
-            stack = new Stack<>();
+            if (check){
+                bw.write("yes");
+                bw.newLine();
+            }else{
+                bw.write("no");
+                bw.newLine();
+            }
+            stack.clear();
         }
-
-        bw.write(sb.toString().trim());
         bw.flush();
     }
 }

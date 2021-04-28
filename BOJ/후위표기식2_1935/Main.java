@@ -19,17 +19,17 @@ public class Main {
         for(int i=0; i< arrayPostfix.length;i++) {
             if(Character.isAlphabetic(arrayPostfix[i])){
                 stack.push(Double.parseDouble(br.readLine()));
-            }else{
+            }else if(stack.size()>1){
                 char operator = arrayPostfix[i];
-                double operand1 = stack.pop();
                 double operand2 = stack.pop();
+                double operand1 = stack.pop();
 
                 stack.push(calculator(operand1,operator,operand2));
             }
         }
 
         while (!stack.isEmpty()){
-            bw.write(stack.pop()+"");
+            bw.write(String.format("%.2f",stack.pop()));  // 소수 두번째 자리까지
         }
 
         bw.flush();

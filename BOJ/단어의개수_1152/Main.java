@@ -10,8 +10,17 @@ public class Main {
 
         String[] array = str.split(" ");
 
+        int cnt = array.length;
 
-        System.out.println(array.length);
+        if(cnt != 0 && array[0].equals("")){
+            cnt--;
+        }
+
+        if(cnt != 0 && array[array.length-1].equals("")){
+            cnt--;
+        }
+
+        System.out.println(cnt);
 
     }
 }

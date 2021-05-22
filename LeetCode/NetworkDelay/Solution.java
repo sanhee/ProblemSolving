@@ -4,72 +4,58 @@ import java.util.*;
 
 public class Solution {
 
-    class Element implements Comparable {
-        Integer weight;  // w
-        Integer destination; // v
+    class Edge implements Comparable<Edge>{
+        private final int time;
+        private final int node;
 
-        public Element(int weight, int destination) {
-            this.destination = destination;
-            this.weight = weight;
+        public Edge(int time, int node){
+            this.time = time;
+            this.node = node;
         }
 
         @Override
-        public int compareTo(Object o) {
-            Element element = (Element) o;
-            return this.weight.compareTo(element.weight);
+        public int compareTo(Edge o){
+            return this.time - o.time; // 오름차순
         }
     }
 
     public int networkDelayTime(int[][] times, int n, int k) {
-        // u, v, w
 
-        // u, graph.get(u) = v, graph.get(u).get(v) = w를 넣기 위한 그래프
-        List<List<Integer>> graph = new ArrayList<>();
-
-        for (int u = 0; u < times.length; u++) {
-            List<Integer> weights = new ArrayList<>();
-
-            for (int v = 0; v < times[0].length; v++) {
-                int w = times[u][v];
-                weights.add(w);
+        Map<Integer, List<Edge>> graph = new HashMap<>();
+        for(int[] arr : times){
+            int u = arr[0];
+            int v = arr[1];
+            int w = arr[2];
+            if(!graph.containsKey(u)){
+                graph.put(u, new ArrayList<>());
             }
-            graph.add(weights);
+            graph.get(u).add(new Edge(w,v));
         }
 
-        PriorityQueue<Element> queue = new PriorityQueue<>();
+        PriorityQueue<Edge> queue = new PriorityQueue<>();
+        // 소요시간, 출발노드
+        queue.add(new Edge(0,k));
+        Map<Integer, Integer> dist = new HashMap<>();
 
-        queue.add(new Element(0,k));
-
-        Map<Integer, Integer> distance = new HashMap<>();
-
-        while (!queue.isEmpty()) {
-            Element element = queue.poll();
-
-            int node = element.destination; // 목적지
-            int time = element.weight;
-
-            if (!distance.containsKey(node)) {
-                distance.put(node, time);
-
-                for (int v = 0; v < graph.size(); v++) {
-                    for (int nextV = 0; nextV < graph.get(v).size(); nextV++) {
-                        int tempWeight = time + graph.get(v).get(nextV);
-                        queue.add(new Element(tempWeight, nextV));
-                    }
+        while(!queue.isEmpty()){
+            Edge e = queue.poll();
+            int time = e.time;
+            int node = e.node;
+            if(!dist.containsKey(node)){
+                dist.put(node, time);
+                if(!graph.containsKey(node)){
+                    continue;
+                }
+                for(Edge edge : graph.get(node)){
+                    int alt = time + edge.time;
+                    queue.add(new Edge(alt, edge.node));
                 }
             }
-
         }
-
-        if (distance.size() == n) {
-
-            int max = 0;
-            for (Integer num : distance.values()) {
-                max = Math.max(max, num);
-            }
-            return max;
-        } else {
-            return -1;
+        if(dist.size() == n){
+            return dist.values().stream().mapToInt(d->d).max().orElse(-1);
         }
+        return -1;
     }
+
 }

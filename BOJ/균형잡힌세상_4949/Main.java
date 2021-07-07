@@ -27,12 +27,12 @@ public class Main {
                             stack.push(c);
                             break;
                         case ')':
-                            if(stack.isEmpty()||stack.pop() != '('){
+                            if (stack.isEmpty() || stack.pop() != '(') {
                                 check = false;
                             }
                             break;
                         case ']':
-                            if(stack.isEmpty()||stack.pop() != '['){
+                            if (stack.isEmpty() || stack.pop() != '[') {
                                 check = false;
                             }
                             break;
@@ -42,10 +42,10 @@ public class Main {
             if (!stack.isEmpty()) {
                 check = false;
             }
-            if (check){
+            if (check) {
                 bw.write("yes");
                 bw.newLine();
-            }else{
+            } else {
                 bw.write("no");
                 bw.newLine();
             }

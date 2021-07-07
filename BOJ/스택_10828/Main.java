@@ -14,40 +14,40 @@ public class Main {
 
         int testNum = Integer.parseInt(br.readLine());
 
-        while(testNum-- > 0){
+        while (testNum-- > 0) {
 
             String[] command = br.readLine().split(" ");
 
-            switch (command[0]){
+            switch (command[0]) {
 
                 case "push":
                     stack.push(Integer.parseInt(command[1]));
                     break;
                 case "pop":
-                    if(stack.isEmpty()){
+                    if (stack.isEmpty()) {
                         bw.write("-1");
-                    }else {
-                        bw.write(stack.pop()+"");
+                    } else {
+                        bw.write(stack.pop() + "");
                     }
                     bw.newLine();
                     break;
                 case "size":
-                    bw.write(stack.size()+"");
+                    bw.write(stack.size() + "");
                     bw.newLine();
                     break;
                 case "empty":
-                    if(stack.isEmpty()){
+                    if (stack.isEmpty()) {
                         bw.write("1");
-                    }else{
+                    } else {
                         bw.write("0");
                     }
                     bw.newLine();
-                break;
+                    break;
                 case "top":
-                    if(stack.isEmpty()){
+                    if (stack.isEmpty()) {
                         bw.write("-1");
-                    }else{
-                        bw.write(stack.peek()+"");
+                    } else {
+                        bw.write(stack.peek() + "");
                     }
                     bw.newLine();
                     break;

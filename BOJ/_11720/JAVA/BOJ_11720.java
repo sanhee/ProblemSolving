@@ -19,8 +19,8 @@ public class BOJ_11720 {
             array_num = inputNumber.split(""); // 배열에 한글자씩 저장
             int nSum = 0; // 입력된 수의 합산을 담을 변수
 
-            for(int i=0; i<Integer.parseInt(inputMax);i++) {
-                nSum = nSum+Integer.parseInt(array_num[i]);
+            for (int i = 0; i < Integer.parseInt(inputMax); i++) {
+                nSum = nSum + Integer.parseInt(array_num[i]);
             }
             System.out.println(nSum);
 

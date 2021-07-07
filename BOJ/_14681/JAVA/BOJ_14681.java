@@ -22,10 +22,10 @@ public class BOJ_14681 {
 
             if (nStart > 0) // 1사분면 또는 4사분면
             {
-                answer = nEnd>0 ? 1:4;
+                answer = nEnd > 0 ? 1 : 4;
             } else // 2사분면 또는 3사분면
             {
-                answer = nEnd>0 ? 2:3;
+                answer = nEnd > 0 ? 2 : 3;
             }
 
             System.out.println(answer);

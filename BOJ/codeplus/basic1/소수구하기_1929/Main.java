@@ -11,15 +11,15 @@ public class Main {
             final int RANGE_START = Integer.parseInt(INPUT_RANGE[0]);
             final int RANGE_END = Integer.parseInt(INPUT_RANGE[1]);
 
-            boolean[] chekedNotPrime = new boolean[RANGE_END+1]; // 배열조작을 위해 +1 해주어야함.
+            boolean[] chekedNotPrime = new boolean[RANGE_END + 1]; // 배열조작을 위해 +1 해주어야함.
 
             StringBuilder sb = new StringBuilder();
             for (int i = 2; i <= RANGE_END; i++) {
                 if (!chekedNotPrime[i]) {
-                    if (i>=RANGE_START) {
+                    if (i >= RANGE_START) {
                         sb.append(i).append(System.lineSeparator());
                     }
-                    for(int j=i*2; j<=RANGE_END ; j+=i) {
+                    for (int j = i * 2; j <= RANGE_END; j += i) {
                         chekedNotPrime[j] = true;
                     }
                 }

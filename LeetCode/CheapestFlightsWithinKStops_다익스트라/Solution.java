@@ -33,6 +33,7 @@ public class Solution {
 
 
         // 인접 노드를 모두 탐색(BFS)해야하므로, Queue 자료구조를 이용한다.
+        // 만약 priority queue를 통해 정렬을 하면, 정상적인 BFS 탐색을 할 수 없음.
         Queue<Node> queue = new LinkedList<>();
 
         // 최종 비용을 담을 변수
@@ -65,7 +66,7 @@ public class Solution {
 
                     // 불필요한 BFS를 막기위한 조건
                     // 같은 목적지를 가면서 굳이 더 비싼 경로를 탐색할 필요가 없기 때문임.
-                    if (weight.getOrDefault(to, 99999) > alt) {
+                    if (weight.getOrDefault(to, INF) > alt) {
                         weight.put(to, alt);
                         queue.add(new Node(to, alt, current.stop + 1));
                     }

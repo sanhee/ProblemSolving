@@ -21,21 +21,20 @@ public class Solution {
         int result = 0;
 
         for (int i = 0; i < inputArray.length; i++) {
-            if(i>0) {
+            if (i > 0) {
                 current = RomanNumber.valueOf(inputArray[i]).value;
-                if(prev >= current){
+                if (prev >= current) {
                     result += current;
-                }else{
-                    result += (current-(prev*2));  // 이전 IF문 으로 이미 이전의 작은 값이 더해져있으므로, IV 같은 연산을 하기 위해서는 이전 요소를 두번 빼줘야 하낟.
+                } else {
+                    result += (current - (prev * 2));  // 이전 IF문 으로 이미 이전의 작은 값이 더해져있으므로, IV 같은 연산을 하기 위해서는 이전 요소를 두번 빼줘야 하낟.
                 }
                 prev = current;
                 continue;
             }
-           prev = RomanNumber.valueOf(inputArray[i]).value;
-           result += prev;
+            prev = RomanNumber.valueOf(inputArray[i]).value;
+            result += prev;
         }
         return result;
     }
 
 }
-

@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class BOJ_2920 {
 
-    public static void main(String[] args)  throws IOException {
+    public static void main(String[] args) throws IOException {
 
         Scanner sc = new Scanner(System.in);
 
@@ -20,27 +20,24 @@ public class BOJ_2920 {
         int ascendingCNT = 0;
         int decendingCNT = 0;
 
-        for(int i=0;i<8;i++) {
+        for (int i = 0; i < 8; i++) {
             InputNum = sc.nextInt();
 
-            if(InputNum == ++preNum) {
+            if (InputNum == ++preNum) {
                 preNum = InputNum;
                 ascendingCNT++;
-            }
-            else if(InputNum == --preNum2) {
+            } else if (InputNum == --preNum2) {
                 preNum2 = InputNum;
                 decendingCNT++;
             }
 
         }
 
-        if(ascendingCNT == 8) {
+        if (ascendingCNT == 8) {
             System.out.println("ascending");
-        }
-        else if(decendingCNT == 8) {
+        } else if (decendingCNT == 8) {
             System.out.println("descending");
-        }
-        else{
+        } else {
             System.out.println("mixed");
         }
 

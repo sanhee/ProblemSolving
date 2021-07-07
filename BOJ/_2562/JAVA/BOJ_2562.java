@@ -10,19 +10,19 @@ import java.io.InputStreamReader;
 
 public class BOJ_2562 {
 
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
 
         BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
 
-        int maxValue=0;
+        int maxValue = 0;
         int index = 0;
-        for(int i=0;i<9;i++) {
+        for (int i = 0; i < 9; i++) {
             int number = 0;
-            number= Integer.parseInt(buf.readLine());
+            number = Integer.parseInt(buf.readLine());
 
-            if(maxValue < number) {
+            if (maxValue < number) {
                 maxValue = number;
-                index = i+1;
+                index = i + 1;
             }
         }
         System.out.println(maxValue);

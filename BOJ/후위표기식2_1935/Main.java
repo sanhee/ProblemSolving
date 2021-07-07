@@ -51,8 +51,8 @@ public class Main {
             }
         }
 
-        if(!stack.isEmpty()) {
-            bw.write(String.format("%.2f",stack.pop()));
+        if (!stack.isEmpty()) {
+            bw.write(String.format("%.2f", stack.pop()));
         }
 
         bw.flush();

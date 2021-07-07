@@ -1,5 +1,6 @@
-## 문제링크 
- - [Reverse Integer - LeetCode](https://leetcode.com/problems/reverse-integer/)
+## 문제링크
+
+- [Reverse Integer - LeetCode](https://leetcode.com/problems/reverse-integer/)
 
 > Given a signed 32-bit integer `x`, return `x` *with its digits reversed*. If reversing `x` causes the value to go outside the signed 32-bit integer range `[-231, 231 - 1]`, then return `0`.
 **Assume the environment does not allow you to store 64-bit integers (signed or unsigned).**
@@ -19,13 +20,14 @@ Output: -321
 ```
 
 ## 참고자료
+
 ### Integer 최대, 최소값 범위
 
- - [[문돌이의IT] 자바(Java) 변수 타입 별 최대, 최소값 확인하기](https://improver.tistory.com/90)
+- [[문돌이의IT] 자바(Java) 변수 타입 별 최대, 최소값 확인하기](https://improver.tistory.com/90)
 
 # 접근 과정
 
-입력 정수를 
+입력 정수를
 
 ## 작성한 코드
 

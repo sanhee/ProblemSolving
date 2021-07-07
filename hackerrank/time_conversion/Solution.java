@@ -14,22 +14,20 @@ public class Solution {
 
         StringBuilder sb = new StringBuilder(s);
 
-        String strHour = s.charAt(0)+""+s.charAt(1);
+        String strHour = s.charAt(0) + "" + s.charAt(1);
         int nHour = Integer.parseInt(strHour);
 
-        if(s.contains("PM")) {
-            nHour = nHour<12 ? nHour+12 : nHour;
-            sb.delete(sb.indexOf("P"),sb.length());
-        }
-        else if(s.contains("AM")) {
-            nHour = nHour>=12 ? nHour-12 : nHour;
-            sb.delete(sb.indexOf("A"),sb.length());
+        if (s.contains("PM")) {
+            nHour = nHour < 12 ? nHour + 12 : nHour;
+            sb.delete(sb.indexOf("P"), sb.length());
+        } else if (s.contains("AM")) {
+            nHour = nHour >= 12 ? nHour - 12 : nHour;
+            sb.delete(sb.indexOf("A"), sb.length());
         }
 
-        if(nHour/10 >= 1) {
+        if (nHour / 10 >= 1) {
             sb.replace(0, 2, Integer.toString(nHour));
-        }
-        else {
+        } else {
             sb.replace(0, 1, "0");
             sb.replace(1, 2, Integer.toString(nHour));
         }
@@ -37,6 +35,7 @@ public class Solution {
     }
 
     private static final Scanner scan = new Scanner(System.in);
+
     public static void main(String[] args) throws IOException {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 

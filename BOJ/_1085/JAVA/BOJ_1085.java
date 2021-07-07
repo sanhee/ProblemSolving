@@ -17,7 +17,7 @@ public class BOJ_1085 {
         x = Math.min(x, w - x); // x-> w까지 거리와 어떤게 더 가까운지 비교
         y = Math.min(y, h - y);
 
-        bw.write(String.valueOf(Math.min(x,y)));
+        bw.write(String.valueOf(Math.min(x, y)));
         bw.flush();
 
         bw.close();

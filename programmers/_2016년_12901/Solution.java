@@ -4,11 +4,11 @@ import java.time.LocalDate;
 
 class Solution {
     public String solution(int a, int b) {
-        LocalDate localDate = LocalDate.of(2016,a,b);
+        LocalDate localDate = LocalDate.of(2016, a, b);
 
-        String[] day = {"SUN","MON","TUE","WED","THU","FRI","SAT"};
+        String[] day = {"SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"};
 
-        switch (localDate.getDayOfWeek().toString()){
+        switch (localDate.getDayOfWeek().toString()) {
 
             case "SUNDAY":
                 return day[0];

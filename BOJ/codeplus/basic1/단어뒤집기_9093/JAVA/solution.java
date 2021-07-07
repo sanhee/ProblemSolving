@@ -17,7 +17,7 @@ public class solution {
 
         int testCaseNum = Integer.parseInt(br.readLine());
 
-        while(testCaseNum-- > 0) {
+        while (testCaseNum-- > 0) {
 
             String separatedLine = br.readLine() + '\n';
             Stack<Character> stack = new Stack<>();

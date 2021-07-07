@@ -19,7 +19,7 @@ public class Main {
             queue.add(Integer.parseInt(br.readLine()));
         }
 
-        while (!queue.isEmpty() && queue.size()>1) {
+        while (!queue.isEmpty() && queue.size() > 1) {
             Integer card1 = queue.poll();
             Integer card2 = queue.poll();
             Integer sum = card1 + card2;

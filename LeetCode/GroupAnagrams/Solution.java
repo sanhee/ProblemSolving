@@ -18,7 +18,7 @@ import java.util.*;
 
 public class Solution {
     public static void main(String[] args) {
-        new Solution().groupAnagrams(new String[]{"bdddddddddd","bbbbbbbbbbc"});
+        new Solution().groupAnagrams(new String[]{"bdddddddddd", "bbbbbbbbbbc"});
     }
 
     public List<List<String>> groupAnagrams(String[] strs) {
@@ -26,22 +26,22 @@ public class Solution {
         int[] id = new int[26]; // a~z 개수
         Map<String, List<String>> map = new HashMap<>();
 
-        for(String s : strs){
+        for (String s : strs) {
 
-            Arrays.fill(id,0);
+            Arrays.fill(id, 0);
 
-            for(char c : s.toCharArray()){
-                id[c-'a']++;  // 소문자만 취급한다고 했음, 문자에 해당하는 유니코드 정수 인덱스를 구한다.
+            for (char c : s.toCharArray()) {
+                id[c - 'a']++;  // 소문자만 취급한다고 했음, 문자에 해당하는 유니코드 정수 인덱스를 구한다.
             }
 
             StringBuilder sb = new StringBuilder();
 
-            for(int n : id){
+            for (int n : id) {
                 sb.append(n);
             }
             String key = sb.toString();
             System.out.println(key);
-            if(!map.containsKey(key)){
+            if (!map.containsKey(key)) {
                 map.put(key, new ArrayList<String>());
             }
             map.get(key).add(s);

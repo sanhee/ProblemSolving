@@ -7,13 +7,13 @@ public class Solution {
     }
 
     public boolean isPalindrome(String s) {
-        s = s.replaceAll("[^a-zA-Z0-9]","").toUpperCase();
+        s = s.replaceAll("[^a-zA-Z0-9]", "").toUpperCase();
 
         int forward = 0;
-        int backward = s.length()-1;
+        int backward = s.length() - 1;
 
-        while(forward<backward){
-            if(s.charAt(forward) != s.charAt((backward))){
+        while (forward < backward) {
+            if (s.charAt(forward) != s.charAt((backward))) {
                 return false;
             }
             forward++;

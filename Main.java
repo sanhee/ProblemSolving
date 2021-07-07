@@ -28,19 +28,19 @@ public class Main {
             }
 
             for (char cmd : commands) {
-                switch (cmd){
+                switch (cmd) {
                     case '>':
-                        if(cursor.hasNext()){
+                        if (cursor.hasNext()) {
                             cursor.next();
                         }
                         break;
                     case '<':
-                        if(cursor.hasPrevious()){
+                        if (cursor.hasPrevious()) {
                             cursor.previous();
                         }
                         break;
                     case '-':
-                        if(cursor.hasPrevious()){
+                        if (cursor.hasPrevious()) {
                             cursor.previous();
                             cursor.remove();
                         }

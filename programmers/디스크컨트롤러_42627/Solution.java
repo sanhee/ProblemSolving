@@ -5,7 +5,7 @@ import java.util.PriorityQueue;
 
 public class Solution {
     public static void main(String[] args) {
-        System.out.println(new Solution().solution(new int[][]{{0, 3},{3, 9}, {1, 100}}));
+        System.out.println(new Solution().solution(new int[][]{{0, 3}, {3, 9}, {1, 100}}));
     }
 
     public int solution(int[][] jobs) {

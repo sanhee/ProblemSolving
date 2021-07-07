@@ -15,6 +15,7 @@ public class Main {
         if (x == parent[x]) {
             return x;
         }
+        // 재귀로 루트노드를 찾을떄까지~
         return parent[x] = findParent(parent[x]); // path compression
     }
 
@@ -49,13 +50,13 @@ public class Main {
 
         // 각 원소가 속한 집합 출력하기
         System.out.println("각 원소가 속한 집합: ");
-        for(int i=1; i<=v;i++){
+        for (int i = 1; i <= v; i++) {
             System.out.print(findParent(i) + " ");
         }
         System.out.println();
 
         // 부모 테이블 내용 출력하기
-        for(int i=1; i<=v;i++){
+        for (int i = 1; i <= v; i++) {
             System.out.print(parent[i] + " ");
         }
         System.out.println();

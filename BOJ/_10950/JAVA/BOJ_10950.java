@@ -9,8 +9,8 @@ public class BOJ_10950 {
 
         int TestCaseNum = sc.nextInt();
 
-        for(int i=0 ; i<TestCaseNum;i++){
-            sb.append(sc.nextInt()+sc.nextInt()).append("\n");
+        for (int i = 0; i < TestCaseNum; i++) {
+            sb.append(sc.nextInt() + sc.nextInt()).append("\n");
         }
         System.out.println(sb);
     }

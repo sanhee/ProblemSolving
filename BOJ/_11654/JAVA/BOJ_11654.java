@@ -14,10 +14,9 @@ public class BOJ_11654 {
 
         char Input = buff.readLine().charAt(0);
 
-        int ASCII_NUM = (int)Input;
+        int ASCII_NUM = (int) Input;
 
         System.out.println(ASCII_NUM);
-        
 
 
     }

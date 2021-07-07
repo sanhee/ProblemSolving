@@ -14,23 +14,23 @@ public class BOJ_10818 {
 
         Integer.parseInt(buff.readLine());
 
-        StringTokenizer strToken = new StringTokenizer(buff.readLine()," ");
+        StringTokenizer strToken = new StringTokenizer(buff.readLine(), " ");
 
         int max = -1000000;
         int min = 1000000;
 
-        while(strToken.hasMoreTokens()){
+        while (strToken.hasMoreTokens()) {
             int val = Integer.parseInt(strToken.nextToken());
 
-            if(val>max) {
+            if (val > max) {
                 max = val;
             }
-            if(val<min) {
+            if (val < min) {
                 min = val;
             }
 
         }
-        System.out.println(min+" "+max);
+        System.out.println(min + " " + max);
 
 
     }

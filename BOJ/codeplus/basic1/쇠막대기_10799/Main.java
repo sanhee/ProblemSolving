@@ -9,7 +9,7 @@ import java.util.Stack;
  * Github : https://github.com/sanhee
  */
 public class Main {
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -19,19 +19,19 @@ public class Main {
         char[] inputCharArray = br.readLine().toCharArray();
         boolean closeBracketCheck = false;
 
-        for(Character c : inputCharArray){
+        for (Character c : inputCharArray) {
 
-            switch (c){
+            switch (c) {
                 case '(':
                     closeBracketCheck = false;
                     openBracketStack.push(c);
                     break;
                 case ')':
-                    if(closeBracketCheck){
-                        totalCount+=1;
+                    if (closeBracketCheck) {
+                        totalCount += 1;
                         openBracketStack.pop();
-                    }else{
-                        if (!openBracketStack.isEmpty()){
+                    } else {
+                        if (!openBracketStack.isEmpty()) {
                             openBracketStack.pop();
 
                             totalCount += openBracketStack.size();

@@ -11,14 +11,14 @@ public class BOJ_1978 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int InputTestNum = Integer.parseInt(br.readLine());
-        StringTokenizer InputNum = new StringTokenizer(br.readLine()," ");
+        StringTokenizer InputNum = new StringTokenizer(br.readLine(), " ");
         int cnt = 0;
 
-        while(InputNum.hasMoreTokens()){
-            int num =  Integer.parseInt(InputNum.nextToken());
-            for(int i=2 ; i <= num ; i++){
-                if(i!=num && num % i == 0) break;
-                if(i==num && num % i == 0) cnt++;
+        while (InputNum.hasMoreTokens()) {
+            int num = Integer.parseInt(InputNum.nextToken());
+            for (int i = 2; i <= num; i++) {
+                if (i != num && num % i == 0) break;
+                if (i == num && num % i == 0) cnt++;
             }
         }
         System.out.println(cnt);

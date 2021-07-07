@@ -15,7 +15,7 @@ public class BOJ_2753 {
 
             int nYear = Integer.parseInt(inputYear);
 
-            if ( (nYear%4 == 0 && nYear%100 != 0) ||  (nYear % 400 == 0) )
+            if ((nYear % 4 == 0 && nYear % 100 != 0) || (nYear % 400 == 0))
                 System.out.println(1);
             else
                 System.out.println(0);

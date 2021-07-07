@@ -8,8 +8,8 @@ class Solution {
         Set<Integer> set = new HashSet<>();
 
         for (int i = 0; i < numbers.length; i++) {
-            for(int j=i+1; j<numbers.length; j++){
-                set.add(numbers[i]+numbers[j]);
+            for (int j = i + 1; j < numbers.length; j++) {
+                set.add(numbers[i] + numbers[j]);
             }
         }
         int[] answer = new int[set.size()];
@@ -17,7 +17,7 @@ class Solution {
         Iterator<Integer> iterator = set.iterator();
 
         int cnt = 0;
-        while(iterator.hasNext()){
+        while (iterator.hasNext()) {
             answer[cnt] = iterator.next();
             cnt++;
         }

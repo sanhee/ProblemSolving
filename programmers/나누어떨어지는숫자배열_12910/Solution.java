@@ -18,7 +18,7 @@ public class Solution {
 
         int[] answer = new int[list.size()];
 
-        if(answer.length == 0){
+        if (answer.length == 0) {
             return new int[]{-1};
         }
         for (int i = 0; i < answer.length; i++) {

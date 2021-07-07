@@ -10,12 +10,12 @@ public class BOJ_10952 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
 
-        while(true){
+        while (true) {
             String str = br.readLine();
-            int a = str.charAt(0)-'0';
-            int b = str.charAt(2)-'0';
-            if(a == 0 && b == 0) break;
-            sb.append(a+b).append("\n");
+            int a = str.charAt(0) - '0';
+            int b = str.charAt(2) - '0';
+            if (a == 0 && b == 0) break;
+            sb.append(a + b).append("\n");
         }
         System.out.println(sb);
     }

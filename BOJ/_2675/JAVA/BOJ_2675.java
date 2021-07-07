@@ -15,15 +15,14 @@ public class BOJ_2675 {
 
         int T = Integer.parseInt(buff.readLine()); // 테스트 케이스 개수
 
-        for (int i=0;i<T;i++) {
+        for (int i = 0; i < T; i++) {
             String[] InPutData = buff.readLine().split(" "); // 공백을 기준으로 짤라서 배열에 넣는다.
 
             int R = Integer.parseInt(InPutData[0]); // 문자 반복 횟수
             String S = InPutData[1]; // 문자열
 
-            for(int j=0;j<S.length();j++)
-            {
-                for(int k=0;k<R;k++){
+            for (int j = 0; j < S.length(); j++) {
+                for (int k = 0; k < R; k++) {
                     System.out.print(S.charAt(j));
                 }
             }

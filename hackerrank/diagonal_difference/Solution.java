@@ -24,12 +24,12 @@ class Result {
         int leftToRight = 0;
         int rightToLight = 0;
 
-        for(int i=0; i<len; i++){
-            leftToRight+=arr.get(i).get(i);
-            rightToLight+=arr.get(i).get((len-1)-i);
+        for (int i = 0; i < len; i++) {
+            leftToRight += arr.get(i).get(i);
+            rightToLight += arr.get(i).get((len - 1) - i);
         }
 
-        difference = Math.abs(leftToRight-rightToLight);
+        difference = Math.abs(leftToRight - rightToLight);
         return difference;
 
     }

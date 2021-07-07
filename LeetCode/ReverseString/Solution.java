@@ -1,10 +1,10 @@
 package com.example.LeetCode.ReverseString;
 
-public  class Solution {
+public class Solution {
     public void reverseString(char[] s) {
         StringBuilder sb = new StringBuilder();
 
-        for(char c : s){
+        for (char c : s) {
             sb.append(c);
         }
 
@@ -12,8 +12,8 @@ public  class Solution {
 
     }
 
-    public static void main(String[] args){
-        char[] s = new char[]{'a','b','c'};
+    public static void main(String[] args) {
+        char[] s = new char[]{'a', 'b', 'c'};
         new Solution().reverseString(s);
         System.out.println(s);
     }

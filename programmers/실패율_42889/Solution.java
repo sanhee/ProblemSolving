@@ -28,7 +28,7 @@ public class Solution {
 
             }
 
-            if(numOfReachedUser == 0){
+            if (numOfReachedUser == 0) {
                 rateOfFail = 0;
                 stageResult.put(i, rateOfFail);
                 continue;
@@ -49,8 +49,8 @@ public class Solution {
 
         int[] answer = new int[N];
 
-        int index=0;
-        for(Map.Entry<Integer, Double> entry : list_entries) {
+        int index = 0;
+        for (Map.Entry<Integer, Double> entry : list_entries) {
             answer[index] = entry.getKey();
             index++;
         }

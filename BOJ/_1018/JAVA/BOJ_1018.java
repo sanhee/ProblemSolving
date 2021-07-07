@@ -6,7 +6,6 @@ public class BOJ_1018 {
     static public void main(String args[]) {
 
 
-
     }
 
 }

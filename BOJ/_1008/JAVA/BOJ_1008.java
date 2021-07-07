@@ -11,10 +11,10 @@ public class BOJ_1008 {
         double a = sc.nextInt();
         double b = sc.nextInt();
 
-        if(a < 0 || b>10) return;
+        if (a < 0 || b > 10) return;
 
-        double div = a/b;
-        System.out.println(String.format("%.9f",div));
+        double div = a / b;
+        System.out.println(String.format("%.9f", div));
 
         sc.close();
 

@@ -15,19 +15,18 @@ public class BOJ_8958 {
 
         int testCaseNum = Integer.parseInt(buff.readLine()); // 테스트케이스 개수
 
-        for(int i=0;i<testCaseNum;i++) {
+        for (int i = 0; i < testCaseNum; i++) {
             int totalSUM = 0;
             int cnt = 0;
             InputSTR = buff.readLine();
             int strLen = InputSTR.length();
 
-            for(int j=0;j<strLen;j++) {
+            for (int j = 0; j < strLen; j++) {
 
-                if(InputSTR.charAt(j) == 'O') {
-                    cnt = cnt+1;
+                if (InputSTR.charAt(j) == 'O') {
+                    cnt = cnt + 1;
                     totalSUM += cnt;
-                }
-                else{
+                } else {
                     cnt = 0;
                 }
 

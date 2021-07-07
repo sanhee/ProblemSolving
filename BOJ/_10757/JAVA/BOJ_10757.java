@@ -15,9 +15,8 @@ public class BOJ_10757 {
 
         String[] num = br.readLine().split(" ");
 
-        BigInteger  a = new BigInteger(num[0]);
-        BigInteger  b = new BigInteger(num[1]);
-
+        BigInteger a = new BigInteger(num[0]);
+        BigInteger b = new BigInteger(num[1]);
 
 
         System.out.println(a.add(b));

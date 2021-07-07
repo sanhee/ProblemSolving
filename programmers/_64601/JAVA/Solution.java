@@ -14,19 +14,18 @@ public class Solution {
         int yLen = board.length;
         Stack<Integer> stack = new Stack<>();
 
-        for(int m=0; m<moveLength; m++){
+        for (int m = 0; m < moveLength; m++) {
 
-            int selectPos = moves[m]-1;
+            int selectPos = moves[m] - 1;
 
-            for(int y=0;y<yLen;y++){
+            for (int y = 0; y < yLen; y++) {
 
-                if(board[y][selectPos] > 0) { //m 값이 존재할 경우
+                if (board[y][selectPos] > 0) { //m 값이 존재할 경우
 
-                    if(!stack.empty() && (stack.lastElement() == board[y][selectPos])){
+                    if (!stack.empty() && (stack.lastElement() == board[y][selectPos])) {
                         stack.pop();
-                        answer +=2;
-                    }
-                    else {
+                        answer += 2;
+                    } else {
                         stack.push(board[y][selectPos]);
                     }
                     board[y][selectPos] = 0;
@@ -41,11 +40,11 @@ public class Solution {
 
     public static void main(String[] args) {
 
-        int[][] board = {{0,0,0,0,0},{0,0,1,0,3},{0,2,5,0,1},{4,2,4,4,2},{3,5,1,3,1}};
-        int[] moves = {1,5,3,5,1,2,1,4};
+        int[][] board = {{0, 0, 0, 0, 0}, {0, 0, 1, 0, 3}, {0, 2, 5, 0, 1}, {4, 2, 4, 4, 2}, {3, 5, 1, 3, 1}};
+        int[] moves = {1, 5, 3, 5, 1, 2, 1, 4};
         int expect = 4;
 
-        int answer = new Solution().solution(board,moves) == expect ? 1 : -1 ;
+        int answer = new Solution().solution(board, moves) == expect ? 1 : -1;
 
         System.out.println(answer);
     }

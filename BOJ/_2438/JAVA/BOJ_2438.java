@@ -15,13 +15,11 @@ public class BOJ_2438 {
 
             int nStar = Integer.parseInt(inputStarNum); // 별 개수
 
-            for(int i=1;i<=nStar;i++)
-            {
-                for(int j=0;j<i;j++)
-                {
+            for (int i = 1; i <= nStar; i++) {
+                for (int j = 0; j < i; j++) {
                     System.out.print("*");
                 }
-                    System.out.print("\n");
+                System.out.print("\n");
             }
 
 

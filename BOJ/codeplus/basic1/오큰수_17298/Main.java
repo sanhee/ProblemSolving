@@ -8,7 +8,7 @@ import java.util.Stack;
  * Blog : https://velog.io/@san
  * Github : https://github.com/sanhee
  */
-public class Main { 
+public class Main {
     public static void main(String[] args) throws IOException {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -27,7 +27,7 @@ public class Main {
                 stack.push(index);
             }
 
-            while (!stack.isEmpty() && Integer.parseInt(inputSequence[stack.peek()]) < currentElement){
+            while (!stack.isEmpty() && Integer.parseInt(inputSequence[stack.peek()]) < currentElement) {
                 nge[stack.pop()] = currentElement;
             }
             stack.push(index);

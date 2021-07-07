@@ -11,75 +11,109 @@ package com.example.BOJ.여행가자_1976_서로소집합;
 
  */
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
+// K 코드 따라치기
 public class Main {
 
-    public static int N = 0; // 도시의 수
-    public static int M = 0; // 여행계획에 속한 도시 수
-    public static int[] parent = new int[100001]; // 부모 노드를 담기 위한 공간
+    public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    public static int[][] graph;
+    public static int[] disjoinSet; // 서로소 집합
 
-    // 부모노드가 무엇인지 검사하는 메소드
-    public static int findParent(int x) {
-        if(parent[x] == x){
-            return x;
-        }
-        return parent[x] = findParent(parent[x]);
-    }
+    public static void main(String[] args) throws IOException {
+        int N = Integer.parseInt(br.readLine()); // 도시 수
+        int M = Integer.parseInt(br.readLine()); // 여행 계획에 속한 도시 수
 
-    // 연결된 노드끼리 부모노드를 검사해서, 가장 작은 것으로 업데이트 시키는 메소드
-    public static int unionParent(int a, int b) {
-        a = findParent(a);
-        b = findParent(b);
-
-        if(a<b){
-            parent[b] = a;
-        }else{
-            parent[a] = b;
-        }
-        return 0;
-    }
-
-
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        N = input.nextInt();
-        M = input.nextInt();
-
-        for(int i = 0 ; i< N ; i++){
-            parent[i] = i;
+        if (M == 0) {
+            System.out.println("YES"); // 이해가 안감
+            System.exit(0);
         }
 
-        // 부모노드 현재 자신 노드의 값으로 초기화
-        for (int i = 0; i < N; i++) {
-            String[] connectInfo = input.nextLine().split(" ");
-            for (int j = 0; j < connectInfo.length; j++) {
-                if (connectInfo[j].equals("0")) {
-                    continue;
-                }
-                unionParent(i,j);
+        graph = new int[N + 1][N + 1];
+        disjoinSet = new int[N + 1];
+
+        // 서로소 집합 자기 자신으로 초기화
+        for (int i = 0; i < disjoinSet.length; i++) {
+            disjoinSet[i] = i;
+        }
+        initGraph();
+
+        // 여행계획
+        int[] itinerary = new int[M];
+        initItinerary(itinerary);
+        initDisjointSet();
+
+
+        int currentSet = disjoinSet[itinerary[0]];
+
+        for (int city : itinerary) {
+            if (findParent(city) != currentSet) {
+                System.out.println("NO");
+                System.exit(0);
             }
         }
+        System.out.println("YES");
 
-        boolean check = false;
+    }
 
-        while(M-- >= 0) {
-
-            String[] travelRoot = input.nextLine().split(" ");
-
-            for (int k = 1; k < travelRoot.length; k++) {
-                if (findParent(k - 1) != findParent(k)) {
-                    check = true;
-                    break;
+    private static void initDisjointSet() {
+        int N = disjoinSet.length - 1;
+        for (int i = 1; i <= N; i++) {
+            for (int j = i + 1; j <= N; j++) {
+                if (graph[i][j] == 1) {
+                    unionParent(i, j);
                 }
             }
         }
 
-        if(!check){
-            System.out.println("YES");
-        }else{
-            System.out.println("NO");
+    }
+
+    private static void initItinerary(int[] itinerary) throws IOException {
+        int M = itinerary.length;
+        StringTokenizer cities = new StringTokenizer(br.readLine());
+
+        for (int i = 0; i < M; i++) {
+            itinerary[i] = Integer.parseInt(cities.nextToken());
+        }
+    }
+
+    public static void initGraph() throws IOException {
+        int N = graph.length - 1;
+        for (int i = 1; i <= N; i++) {
+            StringTokenizer edges = new StringTokenizer(br.readLine());
+            for (int j = 1; j <= N; j++) {
+                graph[i][j] = Integer.parseInt(edges.nextToken());
+                if (graph[i][j] == 1) {
+                    unionParent(i, j);
+                }
+            }
+
         }
 
     }
+
+    private static void unionParent(int i, int j) {
+        int a = findParent(i);
+        int b = findParent(j);
+
+        if (a < b) {
+            disjoinSet[j] = a;
+        } else if (a > b) {
+            disjoinSet[i] = b;
+        }
+
+    }
+
+    private static int findParent(int node) {
+        int parent = disjoinSet[node];
+        if (node == parent) {
+            return node;
+        }
+        return disjoinSet[node] = findParent(parent);
+    }
+
+
 }

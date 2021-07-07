@@ -17,16 +17,13 @@ public class BOJ_2439 {
             int nStar = Integer.parseInt(inputStarNum); // 별 개수
             int num = 0;
 
-            for(int i=1; i<=nStar;i++)
-            {
-                num= nStar-i;
+            for (int i = 1; i <= nStar; i++) {
+                num = nStar - i;
 
-                for(int j=0;j<num;j++)
-                {
+                for (int j = 0; j < num; j++) {
                     System.out.print(" ");
                 }
-                for(int j=num;j<nStar;j++)
-                {
+                for (int j = num; j < nStar; j++) {
                     System.out.print("*");
                 }
                 System.out.println("");

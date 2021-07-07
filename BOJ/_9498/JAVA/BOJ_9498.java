@@ -6,8 +6,7 @@ import java.io.InputStreamReader;
 
 public class BOJ_9498 {
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
 
         try {
 
@@ -15,21 +14,18 @@ public class BOJ_9498 {
             String inputScore = br.readLine();
             int nScore = Integer.parseInt(inputScore);
 
-            if( nScore>= 90 && nScore<=100 ) {
+            if (nScore >= 90 && nScore <= 100) {
                 System.out.println("A");
 
-            }else if( nScore>= 80 && nScore<=89 ) {
+            } else if (nScore >= 80 && nScore <= 89) {
 
                 System.out.println("B");
-            }else if( nScore>= 70 && nScore<=79 )
-            {
+            } else if (nScore >= 70 && nScore <= 79) {
                 System.out.println("C");
 
-            }else if( nScore>= 60 && nScore<=69 )
-            {
+            } else if (nScore >= 60 && nScore <= 69) {
                 System.out.println("D");
-            }else
-            {
+            } else {
                 System.out.println("F");
             }
 

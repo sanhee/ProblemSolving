@@ -21,14 +21,14 @@ public class Main {
 
         Queue<Integer> queue = new LinkedList<>();
 
-        for(int i = 1; i<= N; i++){
+        for (int i = 1; i <= N; i++) {
             queue.add(i);
         }
 
         StringBuilder sb = new StringBuilder();
         sb.append("<");
-        for(int n=0; n<(N-1);n++){  // 이 과정은 N명의 사람이 모두 제거될 때까지 계속되지만, queue에 남아있는 마지막 K를 지울 때 ',' 를 더하면 안되므로 N-1까지 조건
-            for(int k=0 ; k<(K-1); k++){
+        for (int n = 0; n < (N - 1); n++) {  // 이 과정은 N명의 사람이 모두 제거될 때까지 계속되지만, queue에 남아있는 마지막 K를 지울 때 ',' 를 더하면 안되므로 N-1까지 조건
+            for (int k = 0; k < (K - 1); k++) {
                 queue.offer(queue.poll());
             }
             sb.append(queue.poll()).append(", ");

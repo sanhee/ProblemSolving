@@ -11,34 +11,34 @@ public class Main {
 
         char[] input = br.readLine().toUpperCase(Locale.ROOT).toCharArray();
 
-        int[] count = new int[100];
+        int[] count = new int[26];
 
-        Arrays.fill(count,0);
+        Arrays.fill(count, 0);
 
 
         for (int i = 0; i < input.length; i++) {
-            count[input[i]-'A'] +=1;
+            count[input[i] - 'A'] += 1;
         }
 
         int max = 0;
-        for(int i=1;i<count.length;i++){
-            if(count[max] < count[i]){
+        for (int i = 1; i < count.length; i++) {
+            if (count[max] < count[i]) {
                 max = i;
             }
         }
 
         int cnt = 0;
-        for(int i=1;i<count.length;i++){
-           if(count[max] == count[i]){
-               cnt++;
-           }
+        for (int i = 1; i < count.length; i++) {
+            if (count[max] == count[i]) {
+                cnt++;
+            }
         }
 
 
-        if(cnt > 1){
+        if (cnt > 1) {
             bw.write('?');
-        }else{
-            bw.write(max+'A');
+        } else {
+            bw.write(max + 'A');
         }
 
 

@@ -12,11 +12,11 @@ public class Main {
 
         int cnt = array.length;
 
-        if(cnt != 0 && array[0].equals("")){
+        if (cnt != 0 && array[0].equals("")) {
             cnt--;
         }
 
-        if(cnt != 0 && array[array.length-1].equals("")){
+        if (cnt != 0 && array[array.length - 1].equals("")) {
             cnt--;
         }
 

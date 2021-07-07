@@ -12,30 +12,30 @@ public class Solution {
 
         int curDiff = 0;
         int preDiff;
-        int cnt = 0 ;
+        int cnt = 0;
 
-        while(true){
+        while (true) {
 
-           preDiff = curDiff;
-           curDiff = Math.abs(x1-x2);
+            preDiff = curDiff;
+            curDiff = Math.abs(x1 - x2);
 
-           if(x1 != x2 && v1 == v2){  //m 처음 설계할 때는 생각했는데, 코드를 다시 짜다보니 추가하지 못했다. 이거 역시 테스트 케이스를 보고 알았다..
-               return "NO";
-           }
-           if(cnt > 0){
-               if(preDiff-Math.abs(v1-v2) != curDiff){ //m 일정한 감소폭 패턴은 v2-v1을 통해 구할 수 있다.
-                                                       //m x1 =14, v1 = 4, x2=98, v2 = 2 의 반례를 생각하지 못하고 테스트 케이스를 보고 알았다.
-                   return "NO";
-               }
-               if( curDiff == 0 ){
-                   return "YES";
-               }
-           }
-           x1 += v1;
-           x2 += v2;
+            if (x1 != x2 && v1 == v2) {  //m 처음 설계할 때는 생각했는데, 코드를 다시 짜다보니 추가하지 못했다. 이거 역시 테스트 케이스를 보고 알았다..
+                return "NO";
+            }
+            if (cnt > 0) {
+                if (preDiff - Math.abs(v1 - v2) != curDiff) { //m 일정한 감소폭 패턴은 v2-v1을 통해 구할 수 있다.
+                    //m x1 =14, v1 = 4, x2=98, v2 = 2 의 반례를 생각하지 못하고 테스트 케이스를 보고 알았다.
+                    return "NO";
+                }
+                if (curDiff == 0) {
+                    return "YES";
+                }
+            }
+            x1 += v1;
+            x2 += v2;
 
-           cnt++;
-       }
+            cnt++;
+        }
     }
 
     private static final Scanner scanner = new Scanner(System.in);

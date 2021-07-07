@@ -17,17 +17,17 @@ public class Main {
 
             int inputSequence = Integer.parseInt(br.readLine()); // 입력된 수열
 
-            if(cursor < inputSequence){
+            if (cursor < inputSequence) {
                 while (cursor != inputSequence) {
                     stack.push(++cursor);
                     sb.append("+").append("\n");
                 }
             }
-            if(cursor >= inputSequence) { //스택에 들어갔던 마지막 수가 입력된 수열보다 크거나 같을 경우
-                if(stack.pop()==inputSequence){
+            if (cursor >= inputSequence) { //스택에 들어갔던 마지막 수가 입력된 수열보다 크거나 같을 경우
+                if (stack.pop() == inputSequence) {
                     sb.append("-").append("\n");
-                }else{ // pop 을 할때마다 수열이 만들어지므로, 불가능한 경우
-                    sb=new StringBuilder();
+                } else { // pop 을 할때마다 수열이 만들어지므로, 불가능한 경우
+                    sb = new StringBuilder();
                     sb.append("NO");
                     break;
                 }

@@ -19,19 +19,17 @@ public class BOJ_1330 {
             // 먼저 @ 의 인덱스를 찾는다.
             int idx = inputNumbers.indexOf(" ");
 
-            String strFirst =  inputNumbers.substring(0, idx);
-            String strSecond =  inputNumbers.substring(idx+1);
+            String strFirst = inputNumbers.substring(0, idx);
+            String strSecond = inputNumbers.substring(idx + 1);
 
             int nFirst = Integer.parseInt(strFirst);
             int nSecond = Integer.parseInt(strSecond);
 
             String str = "";
-            if (nFirst == nSecond )
-            {
+            if (nFirst == nSecond) {
                 str = "==";
-            } else
-            {
-                str = (nFirst>nSecond) ? ">" : "<";
+            } else {
+                str = (nFirst > nSecond) ? ">" : "<";
             }
             System.out.println(str);
 

@@ -1,8 +1,6 @@
 [Two Sum - LeetCode](https://leetcode.com/problems/two-sum/)
 
-> Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
-You may assume that each input would have exactly one solution, and you may not use the same element twice.
-You can return the answer in any order.
+> Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target. You may assume that each input would have exactly one solution, and you may not use the same element twice. You can return the answer in any order.
 
 **Example 1:**
 
@@ -14,7 +12,7 @@ Output: Because nums[0] + nums[1] == 9, we return [0, 1].
 
 ## 접근 과정
 
-1. 반드시, element < target  
+1. 반드시, element < target
 
 2. 포인터 2개를 만들어, 하나는 기준 포인터, 하나는 이동 포인터로 배열 인덱스를 움직이며 기준 포인터와 합산해 target이 만들어지는지 확인
 

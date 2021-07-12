@@ -1,17 +1,12 @@
 package com.example.programmers.레벨1.수박수박수박수박수박수;
 
-import java.util.*;
-
 public class Solution {
     public String solution(int n) {
-        Queue<Character> queue = new LinkedList<>(Arrays.asList('수','박'));
         StringBuilder sb = new StringBuilder();
 
-        while(n > 0){
-            Character word = queue.poll();
-            queue.add(word);
-            sb.append(word);
-            n--;
+        for(int index=0; index<n; index++){
+            char cursor = (index % 2) == 0 ? '수' : '박';
+            sb.append(cursor);
         }
         return sb.toString();
     }

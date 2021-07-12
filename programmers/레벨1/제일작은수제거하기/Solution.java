@@ -8,23 +8,14 @@ class Solution {
             return new int[]{-1};
         }
 
-        Integer[] arrWrapping = new Integer[arr.length];
+        List<Integer> list = new ArrayList<>();
 
-        for(int i = 0 ; i< arr.length; i++){
-            arrWrapping[i] = arr[i];
+        for(int number : arr){ // 괜히 asList 쓰려고 요상하게 변환 로직 만들지 말고, 정석대로 하자!..
+            list.add(number);
         }
 
-        List<Integer> list = new ArrayList<>(Arrays.asList(arrWrapping));
-
-        int lowNumber = 9_999_999_99;
-        int lowIndex = -1;
-        for(int index = 0; index < list.size(); index++){
-            if(lowNumber > list.get(index)){
-                lowNumber = list.get(index);
-                lowIndex = index;
-            }
-        }
-        list.remove(lowIndex);
+        Integer lowNumber = Collections.min(list); // 와 이런 메소드가 있다니 대박 신기!!..
+        list.remove(lowNumber);
 
         int[] answer = new int[list.size()];
 

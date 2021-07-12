@@ -4,11 +4,9 @@ public class Solution {
     public int solution(int n) {
         int answer = 0;
 
-        String converts = String.valueOf(n);
-        String[] convertArray = converts.split("");
-
-        for(String str : convertArray){
-            answer += Integer.parseInt(str);
+        while (n > 0) {
+            answer += n % 10;  // ex)  12345  % 10  = 5 ... 12%10 = 2
+            n /= 10;  //ex) 1234, 123, 12, 1
         }
 
         return answer;

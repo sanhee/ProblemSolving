@@ -4,10 +4,7 @@ import java.util.*;
 
 public class Solution {
     public String solution(int n) {
-        Queue<Character> queue = new LinkedList<>();
-        queue.add('수');
-        queue.add('박');
-
+        Queue<Character> queue = new LinkedList<>(Arrays.asList('수','박'));
         StringBuilder sb = new StringBuilder();
 
         while(n > 0){

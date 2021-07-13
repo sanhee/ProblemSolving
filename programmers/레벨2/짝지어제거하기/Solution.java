@@ -2,6 +2,10 @@ package com.example.programmers.레벨2.짝지어제거하기;
 
 import java.util.Stack;
 
+// 1. 2개 연속된 문자 검사
+// 2. 연속된 문자 제거
+// 3. 문자가 남아있지 않다면 1 리턴, 그렇지않으면 0 리턴
+
 public class Solution {
 
     public int solution(String s)
@@ -11,14 +15,15 @@ public class Solution {
         char[] words = s.toCharArray();
 
         for(char word : words){
-            char temp = ' ';
+            char stackTop = ' ';
+
             if(!stack.empty()){
-                temp = stack.peek();
+                stackTop = stack.peek();
             }
 
-            if(temp != word) {
+            if(stackTop != word) {  // 연속된 문자가 아닐 경우
                 stack.push(word);
-            }else{
+            }else{ // 연속된 문자인 경우
                 stack.pop();
             }
         }
@@ -27,10 +32,6 @@ public class Solution {
            return 1;
         }
         return 0;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(new Solution().solution("cdcd"));
     }
 
 }

@@ -6,11 +6,10 @@ public class Solution {
 
         StringBuilder sb = new StringBuilder();
 
-        while ( (n / 3) != 0) {
+        while (n>0) {
             sb.append(n%3);
             n = n / 3;
         }
-        sb.append(1);
 
         sb.reverse();
 

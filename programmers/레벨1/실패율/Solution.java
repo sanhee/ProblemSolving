@@ -34,7 +34,11 @@ public class Solution {
         // 실패율 계산
         for(int i=1; i<=N; i++){
             int remain = countOfStage.get(i);
-            fail.put(i,  (remain/ (float) numberOfPeople));
+            if(numberOfPeople > 0) {
+                fail.put(i, (remain / (float) numberOfPeople));
+            }else{
+                fail.put(i, (float)0); // 해당 스테이지에 도전한 사용자가 없을 경우에 대한 예외 :: 3/0 을 생각 못함
+            }
             numberOfPeople = numberOfPeople-countOfStage.get(i);
         }
 

@@ -56,27 +56,18 @@ public class Solution {
           }else{ // 중간 라인 (2,5,8,0)
               int[] numberPosition = getPosition(num);
 
-              // 한쪽 열만 같은 경우
-              if (leftPosition[0] == numberPosition[0] && rightPosition[0] != numberPosition[0]){
-                  answer.append("L");
-                  leftPosition = getPosition(num);
-                  continue;
-              }else if(rightPosition[0] == numberPosition[0] && leftPosition[0] != numberPosition[0]){
-                  answer.append("R");
-                  rightPosition = getPosition(num);
-                  continue;
-              }
+              // 직선의 방정식
+              double op1 = Math.pow(numberPosition[0] - leftPosition[0],2);
+              double op2 = Math.pow(numberPosition[1] - leftPosition[1],2);
+              double leftDiff = Math.sqrt(op1+op2);
 
-              // row,col 비교
-              int leftRowDiff = Math.abs(leftPosition[0] - numberPosition[0]);
-              int rightRowDiff = Math.abs(rightPosition[0] - numberPosition[0]);
-
-              int leftColDiff = Math.abs(leftPosition[1] - numberPosition[1]);
-              int rightColDiff = Math.abs(rightPosition[1] - numberPosition[1]);
+              op1 = Math.pow(numberPosition[0] - rightPosition[0],2);
+              op2 = Math.pow(numberPosition[1] - rightPosition[1],2);
+              double rightDiff = Math.sqrt(op1+op2);
 
 
               // 만약 두 엄지손가락의 거리가 같다면
-              if(leftRowDiff == rightRowDiff && leftColDiff == rightColDiff){
+              if(leftDiff == rightDiff){
                   if(hand.equals("left")){
                       answer.append("L");
                       leftPosition = getPosition(num);
@@ -84,19 +75,11 @@ public class Solution {
                       answer.append("R");
                       rightPosition = getPosition(num);
                   }
-              }else if(leftColDiff != rightColDiff){
-                  if(leftColDiff < rightColDiff){
-                      answer.append("L");
-                      leftPosition = getPosition(num);
-                  }else{
-                      answer.append("R");
-                      rightPosition = getPosition(num);
-                  }
               }
-              else if(leftRowDiff < rightRowDiff){
+              else if(leftDiff < rightDiff){
                   answer.append("L");
                   leftPosition = getPosition(num);
-              }else if(leftRowDiff > rightRowDiff){
+              }else if(leftDiff > rightDiff){
                   answer.append("R");
                   rightPosition = getPosition(num);
               }

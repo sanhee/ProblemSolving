@@ -3,86 +3,108 @@ package com.example.programmers.레벨1.키패드누르기;
 // 01:49 ~
 
 public class Solution {
-    private static boolean isLeftLine(int number){
-        switch (number){
-            case 1:
-            case 4:
-            case 7:
-                return true;
-            default:
-                return false;
-        }
-    }
-    private static boolean isRightLine(int number){
-        switch (number){
-            case 3:
-            case 6:
-            case 9:
-                return true;
-            default:
-                return false;
-        }
-    }
 
-    public int[] getPosition(int number){
-        int[][] keypads = new int[][]{{1,2,3},{4,5,6},{7,8,9},{-1,0,-2}};
+    // 키패드 좌표 얻는 함수
+    private static int[] getPoint(int num) {
+        int[][] keypad = new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}, {-1, 0, -2}};
 
-        for(int row = 0; row < keypads.length; row++){
-            for (int col = 0; col < keypads[0].length; col++){
-                if(keypads[row][col] == number){
-                    return new int[]{row,col};
+        for (int row = 0; row < keypad.length; row++) {
+            for (int col = 0; col < keypad[0].length; col++) {
+                if (keypad[row][col] == num) {
+                    return new int[]{row, col};
                 }
             }
         }
-        return new int[]{-1}; // 올일 없음.
+        return new int[]{-1}; // null을 의미
     }
 
-    public String solution(int[] numbers, String hand) {
+    private static int[] getRowDistance(int[] pos, int[] target) {
 
+        int op1 = Math.abs(pos[0]-target[0]);
+        int op2 = Math.abs(pos[1]-target[1]);
+
+        return new int[]{op1,op2};
+    }
+
+    public static boolean matchDistance(int[] pos1, int[] pos2){
+        if(pos1[0] == pos2[1] && pos1[1] == pos2[0]){
+            return true;
+        }
+
+        return false;
+    }
+
+
+    public String solution(int[] numbers, String hand) {
         StringBuilder answer = new StringBuilder();
 
-        int[] leftPosition = new int[]{3,0}; // *
-        int[] rightPosition = new int[]{3,2}; // #
+        int[] leftPos = new int[]{3, 0}; // 키패드(*)
+        int[] rightPos = new int[]{3, 2}; // 키패드(#)
 
-        for(int num : numbers){
-          if(isLeftLine(num)){
-              answer.append("L");
-              leftPosition = getPosition(num);
-          }else if(isRightLine(num)){
-              answer.append("R");
-              rightPosition = getPosition(num);
-          }else{ // 중간 라인 (2,5,8,0)
-              int[] numberPosition = getPosition(num);
+        for (int n : numbers) {
+            if (n == 1 || n == 4 || n == 7) {
+                answer.append("L");
+                leftPos = getPoint(n);
+            } else if (n == 3 || n == 6 || n == 9) {
+                answer.append("R");
+                rightPos = getPoint(n);
+            } else {
+                int[] targetPos = getPoint(n);
+                int[] leftDiff = getRowDistance(leftPos, targetPos);
+                int[] rightDIff = getRowDistance(rightPos, targetPos);
 
-              // 직선의 방정식
-              double op1 = Math.pow(numberPosition[0] - leftPosition[0],2);
-              double op2 = Math.pow(numberPosition[1] - leftPosition[1],2);
-              double leftDiff = Math.sqrt(op1+op2);
+                if(matchDistance(leftDiff, rightDIff)){
+                    if (hand.equals("left")) {
+                        answer.append("L");
+                        leftPos = getPoint(n);
+                        continue;
+                    } else {
+                        answer.append("R");
+                        rightPos = getPoint(n);
+                        continue;
+                    }
+                }
 
-              op1 = Math.pow(numberPosition[0] - rightPosition[0],2);
-              op2 = Math.pow(numberPosition[1] - rightPosition[1],2);
-              double rightDiff = Math.sqrt(op1+op2);
+                if(leftDiff[0] == rightDIff[0] && leftDiff[1] < rightDIff[1] ){
+                    answer.append("L");
+                    leftPos = getPoint(n);
+                }
+                else if (leftDiff[0] < rightDIff[0]) {
+                    answer.append("L");
+                    leftPos = getPoint(n);
+                } else {
+                    answer.append("R");
+                    rightPos = getPoint(n);
+                }
 
+            }
 
-              // 만약 두 엄지손가락의 거리가 같다면
-              if(leftDiff == rightDiff){
-                  if(hand.equals("left")){
-                      answer.append("L");
-                      leftPosition = getPosition(num);
-                  }else{
-                      answer.append("R");
-                      rightPosition = getPosition(num);
-                  }
-              }
-              else if(leftDiff < rightDiff){
-                  answer.append("L");
-                  leftPosition = getPosition(num);
-              }else if(leftDiff > rightDiff){
-                  answer.append("R");
-                  rightPosition = getPosition(num);
-              }
-          }
         }
+
+
         return answer.toString();
+    }
+
+    public static void main(String[] args) {
+        Solution s = new Solution();
+
+
+        if (s.solution(new int[]{1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5}, "right").equals("LRLLLRLLRRL")) {
+            System.out.println("통과");
+        } else {
+            System.out.println(s.solution(new int[]{1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5}, "right"));
+        }
+
+        if (s.solution(new int[]{7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2}, "left").equals("LRLLRRLLLRR")) {
+            System.out.println("통과");
+        } else {
+            System.out.println(s.solution(new int[]{7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2}, "left"));
+        }
+
+        if (s.solution(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 0}, "right").equals("LLRLLRLLRL")) {
+            System.out.println("통과");
+        } else {
+            System.out.println(s.solution(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 0}, "right"));
+        }
     }
 }

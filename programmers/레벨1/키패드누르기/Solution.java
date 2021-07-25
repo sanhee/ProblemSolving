@@ -4,6 +4,7 @@ package com.example.programmers.레벨1.키패드누르기;
 
 public class Solution {
 
+
     // 키패드 좌표 얻는 함수
     private static int[] getPoint(int num) {
         int[][] keypad = new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}, {-1, 0, -2}};
@@ -18,20 +19,8 @@ public class Solution {
         return new int[]{-1}; // null을 의미
     }
 
-    private static int[] getRowDistance(int[] pos, int[] target) {
-
-        int op1 = Math.abs(pos[0]-target[0]);
-        int op2 = Math.abs(pos[1]-target[1]);
-
-        return new int[]{op1,op2};
-    }
-
-    public static boolean matchDistance(int[] pos1, int[] pos2){
-        if(pos1[0] == pos2[1] && pos1[1] == pos2[0]){
-            return true;
-        }
-
-        return false;
+    private static int getRowDistance(int[] pos, int[] target) {
+        return Math.abs(pos[0] - target[0]) + Math.abs(pos[1] - target[1]);
     }
 
 
@@ -50,31 +39,23 @@ public class Solution {
                 rightPos = getPoint(n);
             } else {
                 int[] targetPos = getPoint(n);
-                int[] leftDiff = getRowDistance(leftPos, targetPos);
-                int[] rightDIff = getRowDistance(rightPos, targetPos);
+                int leftDiff = getRowDistance(leftPos, targetPos);
+                int rightDIff = getRowDistance(rightPos, targetPos);
 
-                if(matchDistance(leftDiff, rightDIff)){
+                if(leftDiff < rightDIff){
+                    answer.append("L");
+                    leftPos = getPoint(n);
+                } else if (leftDiff > rightDIff){
+                    answer.append("R");
+                    rightPos = getPoint(n);
+                }else{
                     if (hand.equals("left")) {
                         answer.append("L");
                         leftPos = getPoint(n);
-                        continue;
                     } else {
                         answer.append("R");
                         rightPos = getPoint(n);
-                        continue;
                     }
-                }
-
-                if(leftDiff[0] == rightDIff[0] && leftDiff[1] < rightDIff[1] ){
-                    answer.append("L");
-                    leftPos = getPoint(n);
-                }
-                else if (leftDiff[0] < rightDIff[0]) {
-                    answer.append("L");
-                    leftPos = getPoint(n);
-                } else {
-                    answer.append("R");
-                    rightPos = getPoint(n);
                 }
 
             }
@@ -89,22 +70,11 @@ public class Solution {
         Solution s = new Solution();
 
 
-        if (s.solution(new int[]{1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5}, "right").equals("LRLLLRLLRRL")) {
+        if (s.solution(new int[]{4,5,0}, "right").equals("LLR")) {
             System.out.println("통과");
         } else {
-            System.out.println(s.solution(new int[]{1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5}, "right"));
+            System.out.println(s.solution(new int[]{4,5,0}, "right"));
         }
 
-        if (s.solution(new int[]{7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2}, "left").equals("LRLLRRLLLRR")) {
-            System.out.println("통과");
-        } else {
-            System.out.println(s.solution(new int[]{7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2}, "left"));
-        }
-
-        if (s.solution(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 0}, "right").equals("LLRLLRLLRL")) {
-            System.out.println("통과");
-        } else {
-            System.out.println(s.solution(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 0}, "right"));
-        }
     }
 }

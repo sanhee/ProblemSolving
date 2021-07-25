@@ -1,82 +1,95 @@
 package com.example.programmers.레벨1.신규아이디추천;
 
-/*
-1단계 new_id의 모든 대문자를 대응되는 소문자로 치환합니다.
-2단계 new_id에서 알파벳 소문자, 숫자, 빼기(-), 밑줄(_), 마침표(.)를 제외한 모든 문자를 제거합니다.
-3단계 new_id에서 마침표(.)가 2번 이상 연속된 부분을 하나의 마침표(.)로 치환합니다.
-4단계 new_id에서 마침표(.)가 처음이나 끝에 위치한다면 제거합니다.
-5단계 new_id가 빈 문자열이라면, new_id에 "a"를 대입합니다.
-6단계 new_id의 길이가 16자 이상이면, new_id의 첫 15개의 문자를 제외한 나머지 문자들을 모두 제거합니다.
-     만약 제거 후 마침표(.)가 new_id의 끝에 위치한다면 끝에 위치한 마침표(.) 문자를 제거합니다.
-7단계 new_id의 길이가 2자 이하라면, new_id의 마지막 문자를 new_id의 길이가 3이 될 때까지 반복해서 끝에 붙입니다.
- */
+//1단계 new_id의 모든 대문자를 대응되는 소문자로 치환합니다.
+//2단계 new_id에서 알파벳 소문자, 숫자, 빼기(-), 밑줄(_), 마침표(.)를 제외한 모든 문자를 제거합니다.
+//3단계 new_id에서 마침표(.)가 2번 이상 연속된 부분을 하나의 마침표(.)로 치환합니다.
+//4단계 new_id에서 마침표(.)가 처음이나 끝에 위치한다면 제거합니다.
+//5단계 new_id가 빈 문자열이라면, new_id에 "a"를 대입합니다.
+//6단계 new_id의 길이가 16자 이상이면, new_id의 첫 15개의 문자를 제외한 나머지 문자들을 모두 제거합니다.
+//     만약 제거 후 마침표(.)가 new_id의 끝에 위치한다면 끝에 위치한 마침표(.) 문자를 제거합니다.
+//7단계 new_id의 길이가 2자 이하라면, new_id의 마지막 문자를 new_id의 길이가 3이 될 때까지 반복해서 끝에 붙입니다.
+
+import java.util.Arrays;
+
 public class Solution {
     public String solution(String new_id) {
-        StringBuilder sb = new StringBuilder();
 
-        // 1단계 new_id의 모든 대문자를 대응되는 소문자로 치환합니다.
         char[] newId = new_id.toLowerCase().toCharArray();
 
-        // 2단계 new_id에서 알파벳 소문자, 숫자, 빼기(-), 밑줄(_), 마침표(.)를 제외한 모든 문자를 제거합니다.
+        int index = 0;
+        int dotCount = 0;
 
         for (char c : newId) {
-            if (Character.isAlphabetic(c) || Character.isDigit(c)
-                    || c == '-' || c == '_' || c == '.') {
-
-                sb.append(c);
+            // 허용되지 않는 문자라면 공백으로 치환
+            if (!(Character.isAlphabetic(c) || Character.isDigit(c) || c == '-' || c == '_' || c == '.')) {
+                newId[index] = ' ';
+                dotCount = 0;
+                index++;
+                continue;
             }
-        }
-
-        // 3단계 new_id에서 마침표(.)가 2번 이상 연속된 부분을 하나의 마침표(.)로 치환합니다.
-        newId = sb.toString().toCharArray();
-        sb = new StringBuilder();
-
-        boolean doubleCheck = false;
-        for (char c : newId) {
-            if (c == '.') {
-                if (!doubleCheck) {
-                    doubleCheck = true;
-                    sb.append(c);
+            // 2번 이상 연속된 부분을 하나의 마침표(.)로 치환
+            else if (c == '.') {
+                dotCount++;
+                if (dotCount > 1) {
+                    newId[index] = ' ';
                 }
-            }else{
+            } else {
+                dotCount = 0;
+            }
+            index++;
+        }
+        // 마침표(.)가 처음이나 끝에 위치한다면 제거합니다.
+        if (newId[0] == '.') {
+            newId[0] = ' ';
+        }
+        if (newId[newId.length - 1] == '.') {
+            newId[newId.length - 1] = ' ';
+        }
+
+
+        StringBuilder sb = new StringBuilder();
+
+        for (char c : newId) {
+            // 공백제거
+            if(c != ' ') {
                 sb.append(c);
             }
         }
 
-        //4단계 new_id에서 마침표(.)가 처음이나 끝에 위치한다면 제거합니다.
-
-        int index = sb.indexOf(".");
-
-        while(index == 0 || index == sb.length()-1){
-            sb.delete(index, index);
-        }
-
-        // 5단계 new_id가 빈 문자열이라면, new_id에 "a"를 대입합니다.
-        if(sb.toString().equals("")){
+        // 빈 문자열이라면, new_id에 "a"를 대입
+        if (sb.toString().equals("")) {
             sb.append("a");
         }
 
-        // 6단계 new_id의 길이가 16자 이상이면, new_id의 첫 15개의 문자를 제외한 나머지 문자들을 모두 제거합니다.
-        // 만약 제거 후 마침표(.)가 new_id의 끝에 위치한다면 끝에 위치한 마침표(.) 문자를 제거합니다.
-        int length = sb.length();
+        if (sb.length() >= 16) {
+            new_id = sb.substring(0, 15);
 
-        if(length >= 16){
-            sb = new StringBuilder(sb.substring(0,16));
+            if (new_id.charAt(new_id.length() - 1) == '.') {
+                new_id = sb.substring(0, new_id.length() - 1);
+            }
+
+        }else{
+            new_id = sb.toString();
         }
 
-        if(sb.charAt(length-1) == '.'){
-            sb.delete(length-1,length-1);
-        }
-        //7단계 new_id의 길이가 2자 이하라면, new_id의 마지막 문자를 new_id의 길이가 3이 될 때까지 반복해서 끝에 붙입니다.
-
-        length = sb.length();
-
-        while(length < 3){
-           sb.append(sb.charAt(length-1));
-           length = sb.length();
+        // 마침표(.)가 처음이나 끝에 위치한다면 제거합니다.
+        if (new_id.equals(".")) {
+            new_id = "a";
         }
 
+        char copyBase = new_id.charAt(new_id.length() - 1);
 
-        return sb.toString();
+        StringBuilder sb2 = new StringBuilder(new_id);
+
+        while (sb2.length() < 3) {
+            sb2.append(copyBase);
+        }
+
+        return sb2.toString();
+
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new Solution().solution("=.="));
     }
 }

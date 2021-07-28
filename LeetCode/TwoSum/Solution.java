@@ -2,47 +2,25 @@ package com.example.LeetCode.TwoSum;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Solution {
-    public static int[] twoSum(int[] nums, int target) {
-        System.out.println();
-        System.out.println("nums = " + Arrays.toString(nums) + ", target = " + target);
-        int[] answer = new int[2];
-
-        for (int flag = 0; flag < nums.length; flag++) {
-            // if (nums[flag] > 0 && nums[flag] > target) continue; (* nums = [3, 3, 9], target = 12 )
-            // if (nums[flag] < 0 && nums[flag] < target) continue; (* nums = [-1, -2, -3, -4, -5], target = -8)
-            //m 예외처리를 어떻게 할까? nums = [-3, 4, 3, 90], target = 0
-
-            for (int p = flag + 1; p < nums.length; p++) {
-                int sum = nums[flag] + nums[p];
-
-                if (sum == target) {
-                    answer = new int[]{flag, p};
-                    return answer;
-                }
+    public int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(nums[i])) {
+                return new int[] {map.get(nums[i]), i};
             }
-        }
-        return answer; // You may assume that each input would have exactly one solution
-    }
 
-    public static int[] InputData(String str) {
-        String[] cmd = str.split(" ");
-        int[] numArray = new int[cmd.length];
-        for (int i = 0; i < cmd.length; i++) {
-            numArray[i] = Integer.parseInt(cmd[i]);
+            // 해당 엘리먼트와 합해서 타겟을 만들 수 있는 요소를 구한후, 엘리먼트의 좌표를 저장
+            map.put(target - nums[i], i);
         }
-        return numArray;
+        return new int[]{};
     }
 
     public static void main(String[] args) throws IOException {
 
-        System.out.println(Arrays.toString(twoSum(InputData("2 7 11 15"), 9)));
-        System.out.println(Arrays.toString(twoSum(InputData("3 2 4"), 6)));
-        System.out.println(Arrays.toString(twoSum(InputData("3 3"), 6)));
-        System.out.println(Arrays.toString(twoSum(InputData("3 3 9"), 12)));
-        System.out.println(Arrays.toString(twoSum(InputData("-1 -2 -3 -4 -5"), -8)));
-        System.out.println(Arrays.toString(twoSum(InputData("-3 4 3 90"), 0)));
-
+        System.out.println(Arrays.toString(new Solution().twoSum(new int[]{3, 2, 4}, 6)));
     }
 }

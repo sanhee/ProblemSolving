@@ -33,11 +33,13 @@ public class ShortestPath {
                 return curr.dist;
             }
 
-            // 새로운 좌표를 만들면서 길 순회
+            // 인접한 노드의 새로운 좌표를 탐색
             for(int i=0; i<4; i++){
+                // 이해 안갔던 부분
                 int nr = curr.row + D[i][0];
                 int nc = curr.col + D[i][1];
 
+                // 탐색한 좌표에 대한 예외처리
                 if(nr < 0 || nr > N-1 || nc < 0 || nc > N-1){
                     continue;
                 }

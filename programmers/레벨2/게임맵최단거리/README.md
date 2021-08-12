@@ -2,6 +2,7 @@
 # 게임 맵 최단거리
 
 - 예전에 비슷한 문제를 푼게 있어서, 풀이 생각하는데 어렵지 않았다.
+- bfs 시작을 목적지부터 시작한 이유는, 목적지가 벽으로 둘러 쌓여있으면 탐색의미가 없으므로 빠른 `-1`을 리턴하기 위함.
 
 >  https://programmers.co.kr/learn/courses/30/lessons/1844
 
@@ -65,8 +66,11 @@ public class Solution {
 
         MAX_ROW = maps.length;
         MAX_COLUMN = maps[0].length;
+        
+        final int START_ROW = 0;
+        final int START_COL = 0;
 
-        return bfs(maps.length - 1, maps[0].length - 1, 0, 0, maps);
+        return bfs(MAX_ROW - 1, MAX_COLUMN - 1, START_ROW, START_COL, maps);
     }
 
 }

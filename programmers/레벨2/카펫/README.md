@@ -14,8 +14,7 @@
 
 
 # 2차 시도 (성공)
-
-- 리팩토링 하면서 얼떨결에 해결이 됐는데, 아직 어떤 테스트 케이스를 내가 고려하지 못한 건지 파악을 못했다..
+- double을 사용하지 않고, 모듈라 검증이 된 것만 길이을 구함
 
 ```java
 public class Solution {
@@ -43,8 +42,32 @@ public class Solution {
 }
 ```
 
+# 다른사람 풀이
+
+- 충격 그자체다..
+
+```java
+class Solution {
+    public int[] solution(int brown, int yellow) {
+       int y = 3;
+        int sumXY = (brown + 4) / 2;
+
+        while ((sumXY - y) * y != brown + yellow) {
+            y++;
+        }
+
+        return new int[]{sumXY - y, y};
+    }
+}
+
+```
+
 
 # 첫 시도 (실패) 
+
+- 모듈라 검증을 해주지 않음에도, 소수점 관리를 안하고 있다보니 올바른 가로, 세로 길이가 구해지지 않았던 게 실패 원인이었다. 
+- ex) 1/2,  1/3 .. 등 소수점이 나올 경우 고려를 해야함
+- 각 필드의 자료형을 `double`로 선언해주면 문제 해결 할 수 있음.
 
 ```java
 class Solution {

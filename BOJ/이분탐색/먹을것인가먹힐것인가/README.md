@@ -37,11 +37,11 @@ public class Main {
     public static void main(String[] args) {
         int numOfTestCase = scan.nextInt();
         for (int test = 0; test < numOfTestCase; test++) {
-            int answer = 0;
             input();
             // 이분탐색을 위해 오름차순 정렬
             Arrays.sort(B);
 
+            int answer = 0;
             for (int i = 0; i < N; i++) {
                 answer += lowerBound(0, M-1, A[i]);
             }
@@ -61,7 +61,7 @@ public class Main {
 
             if (B[middle] < target) {
                 left = middle+1;
-                result = middle;
+                result = middle+1; // 왜 +1 해야하지 ?
             }else{
                 right = middle-1;
             }
@@ -116,5 +116,6 @@ public class Main {
         }
     }
 }
+
 
 ```

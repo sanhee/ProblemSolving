@@ -61,7 +61,7 @@ public class Main {
 
             if (B[middle] < target) {
                 left = middle+1;
-                result = middle+1; // 왜 +1 해야하지 ?
+                result = middle+1; // 인덱스로 현재까지 작은 엘리먼트들을 카운트 하는데, 0부터 시작하므로 1부터 세기 위해 더해주는 것
             }else{
                 right = middle-1;
             }

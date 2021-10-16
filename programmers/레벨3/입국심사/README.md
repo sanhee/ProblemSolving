@@ -71,30 +71,44 @@ public class Solution {
 - 진짜 이런 컨셉 전혀 생각 못한게 아쉽다...
 
 ```java
- class Solution {
+class Solution {
     public long solution(int n, int[] times) {
-        Arrays.sort(times);
-        long min=1;//최적의 경우 1초로 초기화
-        long max=(long)times[times.length-1]*n;//최악의 경우로 초기화
-        long mid=0;
-        long sum;
-        long answer = max;
-        while(min<=max){
-            sum=0;
-            mid=(min+max)/2;
-            for(int time:times){
-                sum+=mid/time;//심사관 당 맡을 수 있는 입국자 수
-            }
-            if(sum>=n){//더 맡을 수 있으므로 시간 줄임
-                if(mid<answer){
-                    answer=mid;
-                }
-                max=mid-1;
-            }
-            else{//불가하므로 시간 늘림
-                min=mid+1;
+        long answer = Long.MAX_VALUE;
+        long left = 0;
+        long right = 0;
+        long mid;
+
+        for (int time : times) {
+            if (time > right) {
+                right = time;
             }
         }
+
+        right *= n;
+
+        while (left <= right) {
+            long done = 0;
+            mid = (left + right) / 2;
+
+            for (int time : times) {
+                done += mid / time;
+            }
+
+            if (done < n) {
+// 해당 시간동안 심사를 다 하지 못한 경우
+                left = mid + 1;
+            }
+            else {
+// 시간이 여유있거나, 딱 맞는 경우
+                if (mid < answer) {
+// 가장 타이트한 시간을 찾아야 하므로
+                    answer = mid;
+                }
+
+                right = mid - 1;
+            }
+        }
+
         return answer;
     }
 }

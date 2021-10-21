@@ -3,6 +3,57 @@
 
 - N과 M(3) 문제에서 가지치기만 하면 되는 문제
 
+
+## 2021.10.21 -  2회 풀이
+
+```java
+public class Main {
+    static int N;
+    static int M;
+    static int[] selected;
+    static boolean[] visited;
+    static StringBuilder sb = new StringBuilder();
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        N = scanner.nextInt();
+        M = scanner.nextInt();
+        selected = new int[M];
+        visited = new boolean[N];
+
+        rec_func(0);
+
+        System.out.println(sb.toString());
+        scanner.close();
+    }
+
+    private static void rec_func(int index) {
+        if(index == M){
+            for(int num : selected){
+                sb.append(num).append(" ");
+            }
+            sb.append("\n");
+        }else{
+            for(int i=1; i<=N; i++){
+                if(visited[i-1]){
+                    continue;
+                }
+                selected[index] = i;
+                visited[i-1] = true;
+
+                rec_func(index+1);
+                selected[index] = 0;
+                visited[i-1] = false;
+            }
+        }
+    }
+}
+```
+
+
+## 2021.09.01 -  1회 풀이
+
 ```java
 
 public class Main {

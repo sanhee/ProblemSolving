@@ -6,7 +6,31 @@
    - distance 배열 초기화 부분을 bfs로 이동
    - visited 처리 위치
     
-- 정확하게 왜 메모리초과 였는지 모르겠음..
+- 이 부분이 문제였다.
+  - 새로운 좌표를 만들긴하지만, visited를 안해줘서 영원히 for문을 돔
+  - 인텔리제이는 알아서 멈춰주는지 잘 작동하는데, 조심해야겠다.
+
+### 최종 코드
+```java
+for (int i = 0; i < DIRECTION.length; i++) {
+    int newRow = p.row + DIRECTION[i][0];
+    int newCol = p.col + DIRECTION[i][1];
+
+    if (newRow < 0 || newCol < 0 || newRow > N - 1 || newCol > M - 1) {
+        continue;
+    }
+    if(matrix[newRow][newCol] == 0){
+        continue;
+    }
+    if (visited[newRow][newCol]) {
+        continue;
+    }
+
+    queue.add(new Point(newRow, newCol));
+    distance[newRow][newCol] = distance[p.row][p.col] + 1;
+}
+```
+
 
 ```java
 public class Main {

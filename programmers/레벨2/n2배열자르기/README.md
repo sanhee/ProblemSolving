@@ -36,20 +36,37 @@ public class Solution {
   - 우리는 2차원 좌표를 통해, 요소를 계산 할 수 있기 때문이다.
 
 ```java
+0 1 2 3 
+4 5 6 7
+8 9 10 11
+```
+> row 0 4 8    
+> col은 index가 더 해지는 형태
+  
+```java
 public class Solution {
-    public int[] solution(int n, long left, long right) {
-        int[] answer = new int[(int) (right - left + 1)];
+  public int[] solution(int n, long left, long right) {
+    int[] answer = new int[(int) (right - left + 1)];
 
-        int index = 0;
-        while (left <= right) {
-            int row = (int) (left / n);
-            int col = (int) (left % n);
+    int index = 0;
 
-            answer[index] = Math.max(row, col)+1;
-            left++;
-            index++;
-        }
-        return answer;
+    // 2차원 배열(n*n)의 좌표를 1차원 배열의 좌표로 만든 게 left와 right
+    // 주어진 1차원 배열의 좌표로 순회 하면서 2차원 좌표를 구하면 됨
+    while(left <= right){
+
+      // 2차원 배열 -> 1차원 배열 = (배열길이 * ROW) + COL;
+      int row =  (int) (left / n);
+      int col =  (int) (left % n);
+
+      // 문제 그림 조건 처럼, 행이 열보다 작을 경우는 열로 대체 그 외 값은 열
+      // left, right는 0부터 시작하는 좌표이므로, 우리가 원하는 값으로 바꿔주기 위해 +1을 해줌
+      answer[index] = Math.max(row, col) + 1;
+
+      index++;
+      left++;
     }
+
+    return answer;
+  }
 }
 ```

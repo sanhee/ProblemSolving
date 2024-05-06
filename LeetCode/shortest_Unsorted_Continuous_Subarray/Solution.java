@@ -6,6 +6,8 @@ package com.example.LeetCode.shortest_Unsorted_Continuous_Subarray;
     3. 달라지는 부분부터 길이를 구합니다.
 */
 
+import java.util.Arrays;
+
 class Solution {
     public int findUnsortedSubarray(int[] nums) {
 

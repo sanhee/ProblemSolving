@@ -29,4 +29,5 @@ fun main() {
     println(solution(S = "111") == 5)
     println(solution(S = "111") == 5)
     println(solution(S = "1111010101111") == 22)
+    
 }

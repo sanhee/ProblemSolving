@@ -102,6 +102,7 @@ int[] getTeams(
 ### 입력
 ```text
 3
+2
 team-1 team-2
 team-2 team-3
 team-2 team-4

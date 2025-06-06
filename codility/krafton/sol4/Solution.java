@@ -6,8 +6,7 @@ public class Solution {
 
     public int solution(int[] T, int[] A) {
         boolean[] visited = new boolean[T.length];
-        ArrayList<Integer>[] adj = new ArrayList[T.length];
-
+        ArrayList[] adj = new ArrayList[T.length];
 
         for (int i = 0; i < T.length; i++) {
             adj[i] = new ArrayList<>();
